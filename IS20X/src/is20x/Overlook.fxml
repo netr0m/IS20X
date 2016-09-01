@@ -10,7 +10,6 @@
 <?import javafx.scene.text.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.control.cell.*?>
-<?import fxmltableview.*?>
 <?import javafx.geometry.Insets?>
 
 <AnchorPane id="AnchorPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is20x.OverlookController">
@@ -32,7 +31,7 @@
          <content>
             <TableView fx:id="overLookTable" prefHeight="701.0" prefWidth="1488.0">
               <columns>
-                <TableColumn maxWidth="250.0" minWidth="220.0" prefWidth="220.0" text="Navn">
+                <TableColumn maxWidth="250.0" minWidth="220.0" prefWidth="220.0" text="Navn" fx:id="nameCol">
                     <cellValueFactory>
                         <PropertyValueFactory property="name" />
                     </cellValueFactory>

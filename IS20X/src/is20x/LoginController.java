@@ -6,6 +6,11 @@
 package is20x;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,6 +35,9 @@ public class LoginController implements Initializable, ControlledScreen {
     
     private IS20X application;
     private User loggedUser;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
 
     ScreensController myController;
     /**
@@ -37,7 +45,23 @@ public class LoginController implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Nope
+        String dbURL = "jdbc:mysql://localhost:3306/Overwatch";
+        String username = "root";
+        String password = "root";
+        
+        try {
+            Connection conn = DriverManager.getConnection(dbURL, username, password);
+            
+            if (conn != null) {
+                System.out.println("Connected to " + dbURL);
+                //insertUser(conn);
+                //deleteUser(conn);
+                //listUsers(conn);
+                //updateUser(conn);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }    
     
     public void setScreenParent(ScreensController screenParent) {
