@@ -8,9 +8,9 @@ package is20x;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,9 +35,6 @@ public class LoginController implements Initializable, ControlledScreen {
     
     private IS20X application;
     private User loggedUser;
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
 
     ScreensController myController;
     /**
@@ -49,15 +46,10 @@ public class LoginController implements Initializable, ControlledScreen {
         String username = "root";
         String password = "root";
         
-        try {
-            Connection conn = DriverManager.getConnection(dbURL, username, password);
+        try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
             
             if (conn != null) {
                 System.out.println("Connected to " + dbURL);
-                //insertUser(conn);
-                //deleteUser(conn);
-                //listUsers(conn);
-                //updateUser(conn);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -80,12 +72,32 @@ public class LoginController implements Initializable, ControlledScreen {
         }
     }
     public boolean userLogging(String userId, String password){
-        if (Authenticator.validate(userId, password)) {
-            loggedUser = User.of(userId);
-            return true;
-        } else {
-            return false;
+        String dbUsername = "root";
+        String dbPassword = "root";
+        String dbURL = "jdbc:mysql://localhost:3306/Overwatch";
+        boolean login = false;
+        
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Overwatch");
+            Statement statement = (Statement) conn.createStatement();
+            String sql = "SELECT username, password FROM users WHERE username='" + userId + "' AND password='" + password + "';";
+            statement.executeQuery(sql);
+            ResultSet rs = statement.getResultSet();
+            
+            while(rs.next()) {
+                dbUsername = rs.getString("username");
+                dbPassword = rs.getString("password");
+                
+                if(dbUsername.equals(userId) && dbPassword.equals(password)) {
+                    System.out.println("OK");
+                    login = true;
+                }
+                System.out.println(userId + password + " " + dbUsername + dbPassword);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return login;
     }
     
     public User getLoggedUser() {
