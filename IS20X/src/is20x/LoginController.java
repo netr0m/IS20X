@@ -8,6 +8,7 @@ package is20x;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -78,26 +79,25 @@ public class LoginController implements Initializable, ControlledScreen {
         boolean login = false;
         
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Overwatch");
+            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             Statement statement = (Statement) conn.createStatement();
             String sql = "SELECT username, password FROM users WHERE username='" + userId + "' AND password='" + password + "';";
-            statement.executeQuery(sql);
-            ResultSet rs = statement.getResultSet();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
             
-            while(rs.next()) {
-                dbUsername = rs.getString("username");
-                dbPassword = rs.getString("password");
+            while (rs.next()) {
+                String user = rs.getString("username");
+                String pass = rs.getString("password");
                 
-                if(dbUsername.equals(userId) && dbPassword.equals(password)) {
-                    System.out.println("OK");
-                    login = true;
-                }
-                System.out.println(userId + password + " " + dbUsername + dbPassword);
+                    if ((userId.equals(user)) && (password.equals(password))) {
+                        login = true;
+            }
+            rs.close();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
-        return login;
+        return login; 
     }
     
     public User getLoggedUser() {
