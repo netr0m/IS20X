@@ -51,7 +51,17 @@ public class MainController implements Initializable, ControlledScreen {
     }
     
     @FXML
+    public void goToCreateUser(ActionEvent event) {
+        myController.setScreen(IS20X.newuserID);
+    }
+    
+    @FXML
     public void goToGrading(ActionEvent event) {
         myController.setScreen(IS20X.gradingID);
+    }
+    
+    public void userLoggedOut() {
+        loginscreen.setErrorMessage("");
+        loginscreen.setTeacherMode(false);
     }
 }

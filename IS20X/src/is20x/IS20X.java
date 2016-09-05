@@ -24,6 +24,8 @@ public class IS20X extends Application {
     public static String overlookFile = "Overlook.fxml";
     public static String gradingID = "grading";
     public static String gradingFile = "Grading.fxml";
+    public static String newuserID = "newuser";
+    public static String newuserFile = "NewUser.fxml";
     private User loggedUser;
     
     
@@ -38,6 +40,7 @@ public class IS20X extends Application {
         mainContainer.loadScreen(IS20X.mainID, IS20X.mainFile);
         mainContainer.loadScreen(IS20X.overlookID, IS20X.overlookFile);
         mainContainer.loadScreen(IS20X.gradingID, IS20X.gradingFile);
+        mainContainer.loadScreen(IS20X.newuserID, IS20X.newuserFile);
         
         mainContainer.setScreen(IS20X.loginID);
         

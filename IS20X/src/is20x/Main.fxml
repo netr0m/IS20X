@@ -30,7 +30,12 @@
       </VBox>
       <ToolBar id="header" prefHeight="40.0" prefWidth="618.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-18.0" AnchorPane.topAnchor="0.0">
         <items>
-            <Button fx:id="logout4" alignment="CENTER" mnemonicParsing="false" onAction="#logOut" text="Logg ut" textAlignment="CENTER">
+            <Button fx:id="logout" alignment="CENTER" mnemonicParsing="false" onAction="#logOut" text="Logg ut" textAlignment="CENTER">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="createUser" alignment="CENTER" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#goToCreateUser" text="Ny bruker" textAlignment="CENTER">
                <font>
                   <Font name="Yu Gothic UI Light" size="12.0" />
                </font>

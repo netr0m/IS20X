@@ -36,6 +36,7 @@ public class LoginController implements Initializable, ControlledScreen {
     
     private IS20X application;
     private User loggedUser;
+    private boolean teachermode = false;
 
     ScreensController myController;
     /**
@@ -81,16 +82,23 @@ public class LoginController implements Initializable, ControlledScreen {
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             Statement statement = (Statement) conn.createStatement();
-            String sql = "SELECT username, password FROM users WHERE username='" + userId + "' AND password='" + password + "';";
+            String sql = "SELECT username, password, userrole FROM users WHERE username='" + userId + "' AND password='" + password + "';";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
                 String user = rs.getString("username");
                 String pass = rs.getString("password");
+                String role = rs.getString("userrole");
                 
                     if ((userId.equals(user)) && (password.equals(password))) {
                         login = true;
+                        if (role.equals(("TEACHER"))) {
+                            teachermode = true;
+                        } else {
+                            teachermode = false;
+                        }
+                        System.out.println(role+"MODE");
             }
             rs.close();
             }
@@ -105,7 +113,20 @@ public class LoginController implements Initializable, ControlledScreen {
     }
     
     void userLogout(){
-        loggedUser = null;
+        errorMessage.setText("");
+        teachermode = false;
+    }
+    
+    public boolean teacherMode() {
+        return teachermode;
+    }
+    
+    public void setTeacherMode(boolean mode) {
+        this.teachermode = mode;
+    }
+    
+    public void setErrorMessage(String text) {
+        errorMessage.setText(text);
     }
     /*@FXML
     * private void goToNextScreen(ActionEvent event) {
