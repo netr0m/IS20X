@@ -44,7 +44,7 @@ public class LoginController implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String dbURL = "jdbc:mysql://localhost:3306/Overwatch";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
         String username = "root";
         String password = "root";
         
@@ -76,13 +76,13 @@ public class LoginController implements Initializable, ControlledScreen {
     public boolean userLogging(String userId, String password){
         String dbUsername = "root";
         String dbPassword = "root";
-        String dbURL = "jdbc:mysql://localhost:3306/Overwatch";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
         boolean login = false;
         
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             Statement statement = (Statement) conn.createStatement();
-            String sql = "SELECT username, password, userrole FROM users WHERE username='" + userId + "' AND password='" + password + "';";
+            String sql = "SELECT username, password, userrole FROM user WHERE username='" + userId + "' AND password='" + password + "';";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             

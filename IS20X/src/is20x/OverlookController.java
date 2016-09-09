@@ -6,6 +6,12 @@ package is20x;
  * and open the template in the editor.
  */
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +33,29 @@ public class OverlookController implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        String dbUsername = "root";
+        String dbPassword = "root";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
+        
+        try {
+            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+            Statement statement = (Statement) conn.createStatement();
+            String sql = "SELECT * FROM approval;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                String approved = rs.getString("approved");
+                String studentID = rs.getString("studentID");
+                String approverID = rs.getString("approverID");
+                String moduleID = rs.getString("moduleID");
+                String approvalDate = rs.getString("approvalDate");
+                System.out.println(approved + " " + studentID + " " + approverID + " " + moduleID + " " + approvalDate);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
     
     public void setScreenParent(ScreensController screenParent){
