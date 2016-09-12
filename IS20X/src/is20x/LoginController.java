@@ -37,6 +37,7 @@ public class LoginController implements Initializable, ControlledScreen {
     private IS20X application;
     private User loggedUser;
     private boolean teachermode = false;
+    private boolean assistantmode = false;
 
     ScreensController myController;
     /**
@@ -70,7 +71,7 @@ public class LoginController implements Initializable, ControlledScreen {
             password.setText("");
             userId.setText("");
         } else {
-            errorMessage.setText("Incorrect Username/Password");
+            errorMessage.setText("Feil brukernavn/passord");
         }
     }
     public boolean userLogging(String userId, String password){
@@ -95,6 +96,8 @@ public class LoginController implements Initializable, ControlledScreen {
                         login = true;
                         if (role.equals(("TEACHER"))) {
                             teachermode = true;
+                        } else if (role.equals(("ASSISTANT"))) {
+                            assistantmode = true;
                         } else {
                             teachermode = false;
                         }
