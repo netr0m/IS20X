@@ -40,6 +40,7 @@ public class GradingController implements Initializable, ControlledScreen {
     Label errorLabel;
 
     private IS20X application;
+    String approverID;
 
     ScreensController myController;
     /**
@@ -66,12 +67,8 @@ public class GradingController implements Initializable, ControlledScreen {
         String dbURL = "jdbc:mysql://localhost:33306/uia";
         
         try {
+            String approverID = getApproverID();
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-            Statement stm = (Statement) conn.createStatement();
-            String ssql = "SELECT userID FROM user WHERE name='" + teacherPicker.getValue() + "'";
-            PreparedStatement pps = conn.prepareStatement(ssql);
-            ResultSet rss = pps.executeQuery();
-            String approverID = rss.getString("userID");
             Statement statement = (Statement) conn.createStatement();
             String sql = "SELECT userID FROM user WHERE username='" + studentPicker.getValue() + "'";
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -109,11 +106,28 @@ public class GradingController implements Initializable, ControlledScreen {
                 }
                 
             }
-            
-            errorLabel.setText(modulePicker.getValue() + " godkjent for " + studentPicker.getValue() + ".");
         } catch (SQLException e) {
             System.out.println(e);
         }
         myController.setScreen(IS20X.overlookID);
+    }
+    
+    public String getApproverID() {
+        String dbUsername = "root";
+        String dbPassword = "0verwatch1.0";
+        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        try {
+            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+            Statement stm = (Statement) conn.createStatement();
+            String ssql = "SELECT userID FROM user WHERE name='" + teacherPicker.getValue() + "'";
+            PreparedStatement pps = conn.prepareStatement(ssql);
+            ResultSet rss = pps.executeQuery();
+            while (rss.next()) {
+                approverID = rss.getString("userID");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return approverID;
     }
 }

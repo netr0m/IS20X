@@ -82,7 +82,6 @@ public class LoginController implements Initializable, ControlledScreen {
         
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-            Statement statement = (Statement) conn.createStatement();
             String sql = "SELECT username, password, userrole FROM user WHERE username='" + userId + "' AND password='" + password + "';";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
