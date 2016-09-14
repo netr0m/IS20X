@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
 import javafx.util.converter.ShortStringConverter;
@@ -34,6 +35,8 @@ public class NewUserController implements Initializable, ControlledScreen {
     TextField emailField;
     @FXML
     ComboBox rolePicker;
+    @FXML
+    Label errorLabel;
 
     private IS20X application;
 
@@ -58,16 +61,18 @@ public class NewUserController implements Initializable, ControlledScreen {
     @FXML
     public void submitUser(ActionEvent event) {
         String dbUsername = "root";
-        String dbPassword = "root";
-        String dbURL = "jdbc:mysql://localhost:3306/uia";
+        String dbPassword = "0verwatch1.0";
+        String dbURL = "jdbc:mysql://localhost:33306/uia";
         
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             Statement statement = (Statement) conn.createStatement();
-            statement.execute("INSERT INTO user (name, username, password, email, userrole) VALUES ('" + nameField.getText() + "', '" + usernameField.getText() + "', '" + usernameField.getText() + "', '" + emailField.getText() + "', '" + rolePicker + "');");
+            statement.execute("INSERT INTO user (name, username, password, email, userrole) VALUES ('" + nameField.getText() + "', '" + usernameField.getText() + "', '" + usernameField.getText() + "', '" + emailField.getText() + "', '" + rolePicker.getValue() + "');");
             
         } catch (SQLException e) {
             System.out.println(e);
         }
+        errorLabel.setText("Bruker opprettet");
+        myController.setScreen(IS20X.mainID);
     }
 }

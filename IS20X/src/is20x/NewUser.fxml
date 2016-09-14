@@ -59,6 +59,11 @@
                   </Button>
                </children>
             </HBox>
+            <Label id="errorLabel" fx:id="errorLabel" alignment="CENTER" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="15.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </children>
