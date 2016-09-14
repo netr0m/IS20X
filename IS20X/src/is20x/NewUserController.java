@@ -8,6 +8,8 @@ package is20x;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
@@ -17,8 +19,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.util.StringConverter;
-import javafx.util.converter.ShortStringConverter;
 
 /**
  * FXML Controller class
@@ -68,11 +68,17 @@ public class NewUserController implements Initializable, ControlledScreen {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             Statement statement = (Statement) conn.createStatement();
             statement.execute("INSERT INTO user (name, username, password, email, userrole) VALUES ('" + nameField.getText() + "', '" + usernameField.getText() + "', '" + usernameField.getText() + "', '" + emailField.getText() + "', '" + rolePicker.getValue() + "');");
-            
+            String sql = "SELECT userID FROM user WHERE username='" + usernameField.getText() + "';";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String userID = rs.getString("userID");
+                statement.execute("INSERT INTO approvals (studentID) VALUES ('" + userID + "')");
+            }
+            errorLabel.setText("Bruker " + usernameField.getText() + " opprettet");
         } catch (SQLException e) {
             System.out.println(e);
         }
-        errorLabel.setText("Bruker opprettet");
         myController.setScreen(IS20X.mainID);
     }
 }
