@@ -61,14 +61,6 @@ public class IS20X extends Application {
     public User getLoggedUser() {
         return loggedUser;
     }
-    public boolean userLogging(String userId, String password){
-        if (Authenticator.validate(userId, password)) {
-            loggedUser = User.of(userId);
-            return true;
-        } else {
-            return false;
-        }
-    }
     
     void userLogout(){
         loggedUser = null;

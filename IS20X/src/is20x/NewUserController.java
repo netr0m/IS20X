@@ -8,15 +8,16 @@ package is20x;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.util.StringConverter;
+import javafx.util.converter.ShortStringConverter;
 
 /**
  * FXML Controller class
@@ -25,14 +26,14 @@ import javafx.scene.control.TextField;
  */
 public class NewUserController implements Initializable, ControlledScreen {
     
-    /*@FXML
+    @FXML
     TextField nameField;
     @FXML
     TextField usernameField;
     @FXML
     TextField emailField;
     @FXML
-    TextField rolePicker;*/
+    ComboBox rolePicker;
 
     private IS20X application;
 
@@ -63,9 +64,7 @@ public class NewUserController implements Initializable, ControlledScreen {
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             Statement statement = (Statement) conn.createStatement();
-            /*String sql = "INSERT INTO user (name, username, email, userrole) VALUES ('" + nameField + "', '" + usernameField + "', '" + emailField + "', '" + rolePicker + "');";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();*/
+            statement.execute("INSERT INTO user (name, username, password, email, userrole) VALUES ('" + nameField.getText() + "', '" + usernameField.getText() + "', '" + usernameField.getText() + "', '" + emailField.getText() + "', '" + rolePicker + "');");
             
         } catch (SQLException e) {
             System.out.println(e);
