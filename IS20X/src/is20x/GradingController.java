@@ -119,7 +119,7 @@ public class GradingController implements Initializable, ControlledScreen {
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             Statement stm = (Statement) conn.createStatement();
-            String ssql = "SELECT userID FROM user WHERE name='" + teacherPicker.getValue() + "'";
+            String ssql = "SELECT userID FROM user WHERE username='" + teacherPicker.getValue() + "'";
             PreparedStatement pps = conn.prepareStatement(ssql);
             ResultSet rss = pps.executeQuery();
             while (rss.next()) {
