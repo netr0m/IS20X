@@ -53,6 +53,7 @@ public class GradingController implements Initializable, ControlledScreen {
         String dbUsername = "root";
         String dbPassword = "0verwatch1.0";
         String dbURL = "jdbc:mysql://localhost:33306/uia";
+        ObservableList<Object> comboString = FXCollections.observableArrayList();
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             data = FXCollections.observableArrayList();
@@ -60,7 +61,8 @@ public class GradingController implements Initializable, ControlledScreen {
             ResultSet rs = conn.createStatement().executeQuery("SELECT username FROM user WHERE userrole='STUDENT';");
             while (rs.next()) {
                 //get string from db,whichever way 
-                data.add(new User(rs.getString(1)));
+                comboString.add(rs.getString("username"));
+                //data.add(new User(rs.getString("username")).getUsername());
             }
 
         } catch (SQLException ex) {
@@ -68,7 +70,7 @@ public class GradingController implements Initializable, ControlledScreen {
         }
         
         studentPicker.setItems(null);
-        studentPicker.setItems(data);
+        studentPicker.setItems(comboString);
     }
     
     public void setScreenParent(ScreensController screenParent){

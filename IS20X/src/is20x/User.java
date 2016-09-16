@@ -9,7 +9,8 @@ import javafx.beans.property.StringProperty;
  */
 public class User {
 
-    private final StringProperty name;
+    private StringProperty name;
+    private StringProperty username;
     private StringProperty mod1;
     private StringProperty mod2;
     private StringProperty mod3;
@@ -44,13 +45,17 @@ public class User {
         this.mod14 = new SimpleStringProperty(mod14);
     }
     
-    public User(String name) {
-        this.name = new SimpleStringProperty(name);
+    public User(String username) {
+        this.username = new SimpleStringProperty(username);
     }
 
     //Getters
     public String getName() {
         return name.get();
+    }
+    
+    public String getUsername() {
+        return username.get();
     }
 
     public String getMod1() {
