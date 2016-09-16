@@ -13,12 +13,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 
 /**
  * FXML Controller class
@@ -37,7 +40,6 @@ public class LoginController implements Initializable, ControlledScreen {
     private IS20X application;
     private User loggedUser;
     private boolean teachermode = false;
-    private boolean assistantmode = false;
 
     ScreensController myController;
     /**
@@ -66,6 +68,9 @@ public class LoginController implements Initializable, ControlledScreen {
     @FXML
     private void goToMain(ActionEvent event) {
         if (userLogging(userId.getText(), password.getText())) {
+            if (userId.getText().equals(password.getText())) {
+                createNewPasswordDialog();
+            }
             errorMessage.setText("Velkommen, " + userId.getText());
             myController.setScreen(IS20X.mainID);
             password.setText("");
@@ -96,7 +101,7 @@ public class LoginController implements Initializable, ControlledScreen {
                         if (role.equals(("TEACHER"))) {
                             teachermode = true;
                         } else if (role.equals(("ASSISTANT"))) {
-                            assistantmode = true;
+                            teachermode = true;
                         } else {
                             teachermode = false;
                         }
@@ -130,9 +135,37 @@ public class LoginController implements Initializable, ControlledScreen {
     public void setErrorMessage(String text) {
         errorMessage.setText(text);
     }
-    /*@FXML
-    * private void goToNextScreen(ActionEvent event) {
-    *     myController.setScreen(IS20X.nextID);
-    * }
-    */
+    
+    public void changePassword(String newPassword) {
+        String dbUsername = "root";
+        String dbPassword = "0verwatch1.0";
+        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        try {
+            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+            Statement statement = (Statement) conn.createStatement();
+            statement.execute("UPDATE user SET password='" + newPassword + "' WHERE username='" + userId.getText() + "';");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    protected Dialog createNewPasswordDialog() {
+        TextInputDialog updatePass = new TextInputDialog("");
+        updatePass.setTitle("Vennligst skriv inn et nytt passord");
+        updatePass.getDialogPane().setContentText("Nytt Passord:");
+        updatePass.setHeaderText("Vennligst bytt ditt passord");
+        updatePass.showAndWait()
+                .ifPresent(new Consumer<String>() {
+            @Override
+            public void accept(String response) {
+                if (response.isEmpty()) {
+                    System.out.println("Passord ble ikke endret");
+                } else {
+                    System.out.println("Det nye passordet er: " + response);
+                    changePassword(response);
+                }
+            }
+        });
+        return updatePass;
+    }
 }
