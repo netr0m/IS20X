@@ -23,16 +23,6 @@
       <VBox alignment="CENTER" layoutX="9.0" layoutY="71.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="720.0" prefWidth="1280.0" spacing="30.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="150.0">
          <children>
             <ComboBox id="studentPicker" fx:id="studentPicker" editable="true" maxHeight="25.0" maxWidth="175.0" minHeight="25.0" minWidth="175.0" prefHeight="25.0" prefWidth="175.0" promptText="Velg en elev.." visibleRowCount="15">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="mortea15" />
-                        <String fx:value="srsore15" />
-                        <String fx:value="vegards15" />
-                        <String fx:value="anders15" />
-                        <String fx:value="oscarl15" />
-                        <String fx:value="erlenk15" />
-                    </FXCollections>
-                </items>
             </ComboBox>
             <DatePicker id="datePicker" fx:id="datePicker" maxHeight="25.0" maxWidth="175.0" minHeight="25.0" minWidth="175.0" prefHeight="25.0" prefWidth="175.0" promptText="Velg en dato.." showWeekNumbers="true" />
             <ComboBox id="modulePicker" fx:id="modulePicker" editable="true" maxHeight="25.0" maxWidth="175.0" minHeight="25.0" minWidth="175.0" prefHeight="25.0" prefWidth="175.0" promptText="Velg en modul..">

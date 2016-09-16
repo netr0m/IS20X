@@ -41,6 +41,7 @@
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="TEACHER" />
+                        <String fx:value="ASSISTANT" />
                         <String fx:value="STUDENT" />
                     </FXCollections>
                 </items>

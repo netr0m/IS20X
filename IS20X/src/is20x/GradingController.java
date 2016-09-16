@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,6 +42,7 @@ public class GradingController implements Initializable, ControlledScreen {
 
     private IS20X application;
     String approverID;
+    private ObservableList<User> data;
 
     ScreensController myController;
     /**
@@ -47,7 +50,25 @@ public class GradingController implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        String dbUsername = "root";
+        String dbPassword = "0verwatch1.0";
+        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        try {
+            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+            data = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT username FROM user WHERE userrole='STUDENT';");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                data.add(new User(rs.getString(1)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error"+ex);
+        }
+        
+        studentPicker.setItems(null);
+        studentPicker.setItems(data);
     }
     
     public void setScreenParent(ScreensController screenParent){

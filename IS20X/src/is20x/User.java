@@ -10,20 +10,20 @@ import javafx.beans.property.StringProperty;
 public class User {
 
     private final StringProperty name;
-    private final StringProperty mod1;
-    private final StringProperty mod2;
-    private final StringProperty mod3;
-    private final StringProperty mod4;
-    private final StringProperty mod5;
-    private final StringProperty mod6;
-    private final StringProperty mod7;
-    private final StringProperty mod8;
-    private final StringProperty mod9;
-    private final StringProperty mod10;
-    private final StringProperty mod11;
-    private final StringProperty mod12;
-    private final StringProperty mod13;
-    private final StringProperty mod14;
+    private StringProperty mod1;
+    private StringProperty mod2;
+    private StringProperty mod3;
+    private StringProperty mod4;
+    private StringProperty mod5;
+    private StringProperty mod6;
+    private StringProperty mod7;
+    private StringProperty mod8;
+    private StringProperty mod9;
+    private StringProperty mod10;
+    private StringProperty mod11;
+    private StringProperty mod12;
+    private StringProperty mod13;
+    private StringProperty mod14;
 
     //Default constructor
     public User(String name, String mod1, String mod2, String mod3, String mod4, String mod5, String mod6, String mod7, String mod8, String mod9, String mod10, String mod11, String mod12, String mod13, String mod14) {
@@ -42,6 +42,10 @@ public class User {
         this.mod12 = new SimpleStringProperty(mod12);
         this.mod13 = new SimpleStringProperty(mod13);
         this.mod14 = new SimpleStringProperty(mod14);
+    }
+    
+    public User(String name) {
+        this.name = new SimpleStringProperty(name);
     }
 
     //Getters
