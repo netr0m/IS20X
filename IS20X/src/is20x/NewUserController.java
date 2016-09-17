@@ -68,12 +68,17 @@ public class NewUserController implements Initializable, ControlledScreen {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             Statement statement = (Statement) conn.createStatement();
             statement.execute("INSERT INTO user (name, username, password, email, userrole) VALUES ('" + nameField.getText() + "', '" + usernameField.getText() + "', '" + usernameField.getText() + "', '" + emailField.getText() + "', '" + rolePicker.getValue() + "');");
-            String sql = "SELECT userID FROM user WHERE username='" + usernameField.getText() + "';";
+            String sql = "SELECT userID, userrole FROM user WHERE username='" + usernameField.getText() + "';";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 String userID = rs.getString("userID");
-                statement.execute("INSERT INTO approvals (studentID) VALUES ('" + userID + "')");
+                String role = rs.getString("userrole");
+                if (role.equals("STUDENT")) {
+                    statement.execute("INSERT INTO approvals (studentID) VALUES ('" + userID + "')");
+                } else {
+                    // Nothing
+                }
             }
             errorLabel.setText("Bruker " + usernameField.getText() + " opprettet");
         } catch (SQLException e) {

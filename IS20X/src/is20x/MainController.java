@@ -6,10 +6,6 @@
 package is20x;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,6 +20,7 @@ public class MainController implements Initializable, ControlledScreen {
  
     private IS20X application;
     private LoginController loginscreen;
+    private GradingController grading;
 
     ScreensController myController;
     /**

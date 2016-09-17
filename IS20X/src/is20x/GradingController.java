@@ -43,6 +43,7 @@ public class GradingController implements Initializable, ControlledScreen {
     private IS20X application;
     String approverID;
     private ObservableList<User> data;
+    private ObservableList<User> datax;
 
     ScreensController myController;
     /**
@@ -50,27 +51,8 @@ public class GradingController implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
-        ObservableList<Object> comboString = FXCollections.observableArrayList();
-        try {
-            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-            data = FXCollections.observableArrayList();
-            // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT username FROM user WHERE userrole='STUDENT';");
-            while (rs.next()) {
-                //get string from db,whichever way 
-                comboString.add(rs.getString("username"));
-                //data.add(new User(rs.getString("username")).getUsername());
-            }
-
-        } catch (SQLException ex) {
-            System.err.println("Error"+ex);
-        }
-        
-        studentPicker.setItems(null);
-        studentPicker.setItems(comboString);
+        getPickerData();
+        //getTeacherPicker();
     }
     
     public void setScreenParent(ScreensController screenParent){
@@ -79,6 +61,9 @@ public class GradingController implements Initializable, ControlledScreen {
 
     @FXML
     public void goToMain(ActionEvent event){
+        studentPicker.setValue("");
+        teacherPicker.setValue("");
+        modulePicker.setValue("");
         myController.setScreen(IS20X.mainID);
     }
     
@@ -152,4 +137,71 @@ public class GradingController implements Initializable, ControlledScreen {
         }
         return approverID;
     }
+    
+    public void getPickerData() {
+        String dbUsername = "root";
+        String dbPassword = "0verwatch1.0";
+        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        ObservableList<Object> comboString = FXCollections.observableArrayList();
+        try {
+            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+            data = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT username FROM user WHERE userrole='STUDENT';");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                comboString.add(rs.getString("username"));
+                //data.add(new User(rs.getString("username")).getUsername());
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error"+ex);
+        }
+        
+        studentPicker.setItems(null);
+        studentPicker.setItems(comboString);
+        
+        ObservableList<Object> comboxString = FXCollections.observableArrayList();
+        try {
+            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+            datax = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rss = conn.createStatement().executeQuery("SELECT username FROM user WHERE userrole='TEACHER' OR userrole='ASSISTANT';");
+            while (rss.next()) {
+                //get string from db,whichever way 
+                comboxString.add(rss.getString("username"));
+                //data.add(new User(rs.getString("username")).getUsername());
+            }
+
+        } catch (SQLException exx) {
+            System.err.println("Error"+exx);
+        }
+        
+        teacherPicker.setItems(null);
+        teacherPicker.setItems(comboxString);
+    }
+    
+    /*public void getTeacherPicker() {
+        String dbUsername = "root";
+        String dbPassword = "0verwatch1.0";
+        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        ObservableList<Object> comboxString = FXCollections.observableArrayList();
+        try {
+            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+            datax = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rss = conn.createStatement().executeQuery("SELECT username FROM user WHERE userrole='TEACHER' OR userrole='ASSISTANT';");
+            while (rss.next()) {
+                //get string from db,whichever way 
+                comboxString.add(rss.getString("username"));
+                //data.add(new User(rs.getString("username")).getUsername());
+            }
+
+        } catch (SQLException exx) {
+            System.err.println("Error"+exx);
+        }
+        
+        teacherPicker.setItems(null);
+        teacherPicker.setItems(comboxString);
+    }*/
 }
