@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slit;
+package slit.Client;
 
 /**
  *
  * @author Morten
  */
-public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public interface ControlledScreen {
     
+    //This method will allow the injection of the Parent ScreenPane
+    public void setScreenParent(ScreensController screenPage);
 }
