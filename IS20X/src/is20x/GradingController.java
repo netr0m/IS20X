@@ -69,8 +69,8 @@ public class GradingController implements Initializable, ControlledScreen {
     @FXML
     public void submitGrade(ActionEvent event) {
         String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        String dbPassword = "root";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
         
         try {
             String approverID = getApproverID();
@@ -120,8 +120,8 @@ public class GradingController implements Initializable, ControlledScreen {
     
     public String getApproverID() {
         String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        String dbPassword = "root";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             Statement stm = (Statement) conn.createStatement();
@@ -139,8 +139,8 @@ public class GradingController implements Initializable, ControlledScreen {
     
     public void getPickerData() {
         String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        String dbPassword = "root";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
         ObservableList<Object> comboString = FXCollections.observableArrayList();
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);

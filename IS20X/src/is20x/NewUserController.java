@@ -61,8 +61,8 @@ public class NewUserController implements Initializable, ControlledScreen {
     @FXML
     public void submitUser(ActionEvent event) {
         String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        String dbPassword = "root";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
         
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);

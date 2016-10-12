@@ -63,8 +63,8 @@ public class OverlookController implements Initializable, ControlledScreen {
     //Initialize observable list to hold out database data
     private ObservableList<User> data;
     String dbUsername = "root";
-    String dbPassword = "0verwatch1.0";
-    String dbURL = "jdbc:mysql://localhost:33306/uia";
+    String dbPassword = "root";
+    String dbURL = "jdbc:mysql://localhost:3306/uia";
 
     ScreensController myController;
     /**
