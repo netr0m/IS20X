@@ -52,7 +52,6 @@ public class GradingController implements Initializable, ControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         getPickerData();
-        //getTeacherPicker();
     }
     
     public void setScreenParent(ScreensController screenParent){
@@ -70,8 +69,8 @@ public class GradingController implements Initializable, ControlledScreen {
     @FXML
     public void submitGrade(ActionEvent event) {
         String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        String dbPassword = "root";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
         
         try {
             String approverID = getApproverID();
@@ -121,8 +120,8 @@ public class GradingController implements Initializable, ControlledScreen {
     
     public String getApproverID() {
         String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        String dbPassword = "root";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             Statement stm = (Statement) conn.createStatement();
@@ -140,8 +139,8 @@ public class GradingController implements Initializable, ControlledScreen {
     
     public void getPickerData() {
         String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        String dbPassword = "root";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
         ObservableList<Object> comboString = FXCollections.observableArrayList();
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
@@ -151,7 +150,6 @@ public class GradingController implements Initializable, ControlledScreen {
             while (rs.next()) {
                 //get string from db,whichever way 
                 comboString.add(rs.getString("username"));
-                //data.add(new User(rs.getString("username")).getUsername());
             }
 
         } catch (SQLException ex) {
@@ -170,7 +168,6 @@ public class GradingController implements Initializable, ControlledScreen {
             while (rss.next()) {
                 //get string from db,whichever way 
                 comboxString.add(rss.getString("username"));
-                //data.add(new User(rs.getString("username")).getUsername());
             }
 
         } catch (SQLException exx) {
@@ -180,28 +177,4 @@ public class GradingController implements Initializable, ControlledScreen {
         teacherPicker.setItems(null);
         teacherPicker.setItems(comboxString);
     }
-    
-    /*public void getTeacherPicker() {
-        String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
-        ObservableList<Object> comboxString = FXCollections.observableArrayList();
-        try {
-            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-            datax = FXCollections.observableArrayList();
-            // Execute query and store result in a resultset
-            ResultSet rss = conn.createStatement().executeQuery("SELECT username FROM user WHERE userrole='TEACHER' OR userrole='ASSISTANT';");
-            while (rss.next()) {
-                //get string from db,whichever way 
-                comboxString.add(rss.getString("username"));
-                //data.add(new User(rs.getString("username")).getUsername());
-            }
-
-        } catch (SQLException exx) {
-            System.err.println("Error"+exx);
-        }
-        
-        teacherPicker.setItems(null);
-        teacherPicker.setItems(comboxString);
-    }*/
 }

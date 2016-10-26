@@ -47,9 +47,15 @@ public class LoginController implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+<<<<<<< HEAD
         String dbURL = "jdbc:mysql://localhost:33306/uia";
         String dbUsername = "root";
         String dbPassword = "0verwatch1.0";
+=======
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
+        String username = "root";
+        String password = "root";
+>>>>>>> origin/morten
         
         try (Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword)) {
             
@@ -81,8 +87,8 @@ public class LoginController implements Initializable, ControlledScreen {
     }
     public boolean userLogging(String userId, String password){
         String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        String dbPassword = "root";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
         boolean login = false;
         
         try {
@@ -96,11 +102,13 @@ public class LoginController implements Initializable, ControlledScreen {
                 String pass = rs.getString("password");
                 String role = rs.getString("userrole");
                 
-                    if ((userId.equals(user)) && (password.equals(password))) {
+                    if ((userId.equals(user)) && (password.equals(pass))) {
                         login = true;
                         if (role.equals(("TEACHER"))) {
                             teachermode = true;
                         } else if (role.equals(("ASSISTANT"))) {
+                            teachermode = true;
+                        } else if (role.equals(("ADMIN"))) {
                             teachermode = true;
                         } else {
                             teachermode = false;
@@ -138,8 +146,8 @@ public class LoginController implements Initializable, ControlledScreen {
     
     public void changePassword(String newPassword) {
         String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
+        String dbPassword = "root";
+        String dbURL = "jdbc:mysql://localhost:3306/uia";
         try {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
             Statement statement = (Statement) conn.createStatement();
