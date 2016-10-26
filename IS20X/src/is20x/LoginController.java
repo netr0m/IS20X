@@ -48,10 +48,10 @@ public class LoginController implements Initializable, ControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String dbURL = "jdbc:mysql://localhost:33306/uia";
-        String username = "root";
-        String password = "0verwatch1.0";
+        String dbUsername = "root";
+        String dbPassword = "0verwatch1.0";
         
-        try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
+        try (Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword)) {
             
             if (conn != null) {
                 System.out.println("Connected to " + dbURL);
