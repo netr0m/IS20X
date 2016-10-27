@@ -55,7 +55,7 @@ public class NewUserController implements Initializable, ControlledScreen {
 
     @FXML
     public void goToMain(ActionEvent event){
-        myController.setScreen(IS20X.mainID);
+        myController.setScreen(IS20X.teacherMainID);
     }
     
     @FXML
@@ -84,6 +84,6 @@ public class NewUserController implements Initializable, ControlledScreen {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        myController.setScreen(IS20X.mainID);
+        myController.setScreen(IS20X.teacherMainID);
     }
 }

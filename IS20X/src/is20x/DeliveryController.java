@@ -19,24 +19,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author Morten
  */
-public class GradingController implements Initializable, ControlledScreen {
+public class DeliveryController implements Initializable, ControlledScreen {
     
-    @FXML
-    ComboBox studentPicker;
-    @FXML
-    DatePicker datePicker;
     @FXML
     ComboBox modulePicker;
     @FXML
-    ComboBox teacherPicker;
+    TextField fileName;
+    @FXML
+    TextArea commentField;
     @FXML
     Label errorLabel;
 
@@ -51,7 +50,7 @@ public class GradingController implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        getPickerData();
+        //getPickerData();
     }
     
     public void setScreenParent(ScreensController screenParent){
@@ -60,14 +59,14 @@ public class GradingController implements Initializable, ControlledScreen {
 
     @FXML
     public void goToMain(ActionEvent event){
-        studentPicker.setValue("");
-        teacherPicker.setValue("");
+        commentField.setText("");
+        fileName.setText("");
         modulePicker.setValue("");
-        myController.setScreen(IS20X.teacherMainID);
+        myController.setScreen(IS20X.studentMainID);
     }
     
-    @FXML
-    public void submitGrade(ActionEvent event) {
+    /*@FXML
+    public void submitDelivery(ActionEvent event) {
         String dbUsername = "root";
         String dbPassword = "root";
         String dbURL = "jdbc:mysql://localhost:3306/uia";
@@ -116,9 +115,9 @@ public class GradingController implements Initializable, ControlledScreen {
             System.out.println(e);
         }
         myController.setScreen(IS20X.overlookID);
-    }
+    }*/
     
-    public String getApproverID() {
+    /*public String getApproverID() {
         String dbUsername = "root";
         String dbPassword = "root";
         String dbURL = "jdbc:mysql://localhost:3306/uia";
@@ -135,9 +134,9 @@ public class GradingController implements Initializable, ControlledScreen {
             System.out.println(ex);
         }
         return approverID;
-    }
+    }*/
     
-    public void getPickerData() {
+    /*public void getPickerData() {
         String dbUsername = "root";
         String dbPassword = "root";
         String dbURL = "jdbc:mysql://localhost:3306/uia";
@@ -176,5 +175,5 @@ public class GradingController implements Initializable, ControlledScreen {
         
         teacherPicker.setItems(null);
         teacherPicker.setItems(comboxString);
-    }
+    }*/
 }

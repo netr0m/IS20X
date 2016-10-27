@@ -55,6 +55,11 @@ public class MainController implements Initializable, ControlledScreen {
         myController.setScreen(IS20X.gradingID);
     }
     
+    @FXML
+    public void goToDelivery(ActionEvent event) {
+        myController.setScreen(IS20X.deliveryID);
+    }
+    
     public void userLoggedOut() {
         loginscreen.setErrorMessage("");
         loginscreen.setTeacherMode(false);

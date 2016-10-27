@@ -18,14 +18,18 @@ public class IS20X extends Application {
     
     public static String loginID = "login";
     public static String loginFile = "Login.fxml";
-    public static String mainID = "main";
-    public static String mainFile = "Main.fxml";
+    public static String studentMainID = "main";
+    public static String studentMainFile = "Student.fxml";
+    public static String teacherMainID = "main";
+    public static String teacherMainFile = "Teacher.fxml";
     public static String overlookID = "overlook";
     public static String overlookFile = "Overlook.fxml";
     public static String gradingID = "grading";
     public static String gradingFile = "Grading.fxml";
     public static String newuserID = "newuser";
     public static String newuserFile = "NewUser.fxml";
+    public static String deliveryID = "delivery";
+    public static String deliveryFile = "Delivery.fxml";
     private User loggedUser;
     
     
@@ -37,10 +41,12 @@ public class IS20X extends Application {
         
         ScreensController mainContainer = new ScreensController();
         mainContainer.loadScreen(IS20X.loginID, IS20X.loginFile);
-        mainContainer.loadScreen(IS20X.mainID, IS20X.mainFile);
+        mainContainer.loadScreen(IS20X.studentMainID, IS20X.studentMainFile);
+        mainContainer.loadScreen(IS20X.teacherMainID, IS20X.teacherMainFile);
         mainContainer.loadScreen(IS20X.overlookID, IS20X.overlookFile);
         mainContainer.loadScreen(IS20X.gradingID, IS20X.gradingFile);
         mainContainer.loadScreen(IS20X.newuserID, IS20X.newuserFile);
+        mainContainer.loadScreen(IS20X.deliveryID, IS20X.deliveryFile);
         
         mainContainer.setScreen(IS20X.loginID);
         

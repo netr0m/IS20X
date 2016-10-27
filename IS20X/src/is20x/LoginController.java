@@ -39,7 +39,8 @@ public class LoginController implements Initializable, ControlledScreen {
     
     private IS20X application;
     private User loggedUser;
-    private boolean teachermode = false;
+    public boolean teachermode = false;
+    public String currentUser;
 
     ScreensController myController;
     /**
@@ -47,15 +48,9 @@ public class LoginController implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-<<<<<<< HEAD
-        String dbURL = "jdbc:mysql://localhost:33306/uia";
-        String dbUsername = "root";
-        String dbPassword = "0verwatch1.0";
-=======
         String dbURL = "jdbc:mysql://localhost:3306/uia";
-        String username = "root";
-        String password = "root";
->>>>>>> origin/morten
+        String dbUsername = "root";
+        String dbPassword = "root";
         
         try (Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword)) {
             
@@ -78,7 +73,12 @@ public class LoginController implements Initializable, ControlledScreen {
                 createNewPasswordDialog();
             }
             errorMessage.setText("Velkommen, " + userId.getText());
-            myController.setScreen(IS20X.mainID);
+            if (teachermode == true) {
+                myController.setScreen(IS20X.teacherMainID);
+            }
+            else {
+                myController.setScreen(IS20X.studentMainID);
+            }
             password.setText("");
             userId.setText("");
         } else {
@@ -99,6 +99,7 @@ public class LoginController implements Initializable, ControlledScreen {
             
             while (rs.next()) {
                 String user = rs.getString("username");
+                currentUser = user;
                 String pass = rs.getString("password");
                 String role = rs.getString("userrole");
                 
