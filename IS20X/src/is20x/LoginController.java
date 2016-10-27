@@ -147,6 +147,10 @@ public class LoginController implements Initializable, ControlledScreen {
         errorMessage.setText(text);
     }
     
+    public String getUser() {
+        return currentUser;
+    }
+    
     public void changePassword(String newPassword) {
         String dbUsername = "root";
         String dbPassword = "root";
