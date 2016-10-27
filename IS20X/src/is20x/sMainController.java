@@ -16,7 +16,7 @@ import javafx.fxml.Initializable;
  *
  * @author Morten
  */
-public class MainController implements Initializable, ControlledScreen {
+public class sMainController implements Initializable, ControlledScreen {
  
     private IS20X application;
     private LoginController loginscreen;
@@ -43,16 +43,6 @@ public class MainController implements Initializable, ControlledScreen {
     @FXML
     public void goToOverlook(ActionEvent event) {
         myController.setScreen(IS20X.overlookID);
-    }
-    
-    @FXML
-    public void goToCreateUser(ActionEvent event) {
-        myController.setScreen(IS20X.newuserID);
-    }
-    
-    @FXML
-    public void goToGrading(ActionEvent event) {
-        myController.setScreen(IS20X.gradingID);
     }
     
     @FXML

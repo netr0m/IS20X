@@ -74,9 +74,11 @@ public class LoginController implements Initializable, ControlledScreen {
             }
             errorMessage.setText("Velkommen, " + userId.getText());
             if (teachermode == true) {
+                System.out.println("SUKSESS TEACHERMASTER");
                 myController.setScreen(IS20X.teacherMainID);
             }
             else {
+                System.out.println("Hvis du no kan gi karaktera, e nå galt...");
                 myController.setScreen(IS20X.studentMainID);
             }
             password.setText("");

@@ -18,9 +18,9 @@ public class IS20X extends Application {
     
     public static String loginID = "login";
     public static String loginFile = "Login.fxml";
-    public static String studentMainID = "main";
+    public static String studentMainID = "sMain";
     public static String studentMainFile = "Student.fxml";
-    public static String teacherMainID = "main";
+    public static String teacherMainID = "tMain";
     public static String teacherMainFile = "Teacher.fxml";
     public static String overlookID = "overlook";
     public static String overlookFile = "Overlook.fxml";
