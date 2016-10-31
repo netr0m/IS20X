@@ -82,33 +82,33 @@ public class GradingController implements Initializable, ControlledScreen {
             while (rs.next()) {
                 String userID = rs.getString("userID");
                 if (modulePicker.getValue().equals("Modul 1")) {
-                    statement.execute("UPDATE approvals SET mod1='" + datePicker.getValue() + "', mod1Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod1='" + datePicker.getValue() + "', mod1Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 2")) {
-                    statement.execute("UPDATE approvals SET mod2='" + datePicker.getValue() + "', mod2Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod2='" + datePicker.getValue() + "', mod2Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 3")) {
-                    statement.execute("UPDATE approvals SET mod3='" + datePicker.getValue() + "', mod3Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod3='" + datePicker.getValue() + "', mod3Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 4")) {
-                    statement.execute("UPDATE approvals SET mod4='" + datePicker.getValue() + "', mod4Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod4='" + datePicker.getValue() + "', mod4Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 5")) {
-                    statement.execute("UPDATE approvals SET mod5='" + datePicker.getValue() + "', mod5Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod5='" + datePicker.getValue() + "', mod5Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 6")) {
-                    statement.execute("UPDATE approvals SET mod6='" + datePicker.getValue() + "', mod6Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod6='" + datePicker.getValue() + "', mod6Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 7")) {
-                    statement.execute("UPDATE approvals SET mod7='" + datePicker.getValue() + "', mod7Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod7='" + datePicker.getValue() + "', mod7Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 8")) {
-                    statement.execute("UPDATE approvals SET mod8='" + datePicker.getValue() + "', mod8Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod8='" + datePicker.getValue() + "', mod8Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 9")) {
-                    statement.execute("UPDATE approvals SET mod9='" + datePicker.getValue() + "', mod9Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod9='" + datePicker.getValue() + "', mod9Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 10")) {
-                    statement.execute("UPDATE approvals SET mod10='" + datePicker.getValue() + "', mod10Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod10='" + datePicker.getValue() + "', mod10Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 11")) {
-                    statement.execute("UPDATE approvals SET mod11='" + datePicker.getValue() + "', mod11Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod11='" + datePicker.getValue() + "', mod11Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 12")) {
-                    statement.execute("UPDATE approvals SET mod12='" + datePicker.getValue() + "', mod12Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod12='" + datePicker.getValue() + "', mod12Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 13")) {
-                    statement.execute("UPDATE approvals SET mod13='" + datePicker.getValue() + "', mod13Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod13='" + datePicker.getValue() + "', mod13Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 } else if (modulePicker.getValue().equals("Modul 14")) {
-                    statement.execute("UPDATE approvals SET mod14='" + datePicker.getValue() + "', mod14Approver='" + approverID + "' WHERE studentID='" + userID + "';");
+                    statement.execute("UPDATE approval SET mod14='" + datePicker.getValue() + "', mod14Approver='" + approverID + "' WHERE studentID='" + userID + "';");
                 }
                 
             }

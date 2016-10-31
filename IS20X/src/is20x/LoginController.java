@@ -69,10 +69,10 @@ public class LoginController implements Initializable, ControlledScreen {
     @FXML
     private void goToMain(ActionEvent event) {
         if (userLogging(userId.getText(), password.getText())) {
+            errorMessage.setText("Velkommen, " + userId.getText());
             if (userId.getText().equals(password.getText())) {
                 createNewPasswordDialog();
             }
-            errorMessage.setText("Velkommen, " + userId.getText());
             if (teachermode == true) {
                 System.out.println("SUKSESS TEACHERMASTER");
                 myController.setScreen(IS20X.teacherMainID);

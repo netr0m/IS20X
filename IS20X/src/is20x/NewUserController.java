@@ -75,7 +75,7 @@ public class NewUserController implements Initializable, ControlledScreen {
                 String userID = rs.getString("userID");
                 String role = rs.getString("userrole");
                 if (role.equals("STUDENT")) {
-                    statement.execute("INSERT INTO approvals (studentID) VALUES ('" + userID + "')");
+                    statement.execute("INSERT INTO approval (studentID) VALUES ('" + userID + "')");
                 } else {
                     // Nothing
                 }
@@ -85,5 +85,10 @@ public class NewUserController implements Initializable, ControlledScreen {
             System.out.println(e);
         }
         myController.setScreen(IS20X.teacherMainID);
+        nameField.setText("");
+        usernameField.setText("");
+        emailField.setText("");
+        rolePicker.setValue("");
+        errorLabel.setText("");
     }
 }
