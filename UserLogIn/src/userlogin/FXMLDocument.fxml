@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="394.0" prefWidth="478.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="userlogin.FXMLDocumentController">
+   <children>
+      <Button fx:id="Button" layoutX="216.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Login" />
+      <Label layoutX="94.0" layoutY="253.0" text="Password" />
+      <Label layoutX="93.0" layoutY="215.0" text="Username" />
+      <Label layoutX="98.0" layoutY="124.0" text="Univeristetet i Agder" textFill="RED">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <TextField fx:id="username_box" layoutX="172.0" layoutY="210.0" promptText="Username...." />
+      <TextField fx:id="password_box" layoutX="172.0" layoutY="248.0" promptText="Password...." />
+      <Label fx:id="invalid_label" layoutX="175.0" layoutY="341.0" prefHeight="27.0" prefWidth="135.0" />
+   </children>
+</AnchorPane>
