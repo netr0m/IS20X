@@ -8,16 +8,8 @@
             <web-module-libraries/>
             <web-module-additional-libraries>
                 <library>
-                    <file>${reference.slit-ear-ejb.dist-ear}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-                <library>
                     <file>${reference.slit-client.j2ee-module-car}</file>
                     <path-in-war>/</path-in-war>
-                </library>
-                <library>
-                    <file>${reference.slit-lib.jar}</file>
-                    <path-in-war>/lib</path-in-war>
                 </library>
                 <library>
                     <file>${reference.slit-ejb.dist-ear}</file>
@@ -35,28 +27,12 @@
                 <id>j2ee-module-car</id>
             </reference>
             <reference>
-                <foreign-project>slit-ear-ejb</foreign-project>
-                <artifact-type>j2ee_ear_archive</artifact-type>
-                <script>build.xml</script>
-                <target>dist-ear</target>
-                <clean-target>clean-ear</clean-target>
-                <id>dist-ear</id>
-            </reference>
-            <reference>
                 <foreign-project>slit-ejb</foreign-project>
                 <artifact-type>j2ee_ear_archive</artifact-type>
                 <script>build.xml</script>
                 <target>dist-ear</target>
                 <clean-target>clean-ear</clean-target>
                 <id>dist-ear</id>
-            </reference>
-            <reference>
-                <foreign-project>slit-lib</foreign-project>
-                <artifact-type>jar</artifact-type>
-                <script>build.xml</script>
-                <target>jar</target>
-                <clean-target>clean</clean-target>
-                <id>jar</id>
             </reference>
         </references>
     </configuration>
