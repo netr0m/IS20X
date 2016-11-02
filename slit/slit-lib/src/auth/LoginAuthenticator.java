@@ -5,10 +5,16 @@
  */
 package auth;
 
+import javax.ejb.Remote;
+
+
 /**
  *
- * @author InWhi
+ * @author Morten
  */
-public class LoginAuthenticator {
+@Remote
+public interface LoginAuthenticator {
+    boolean authenticate(String username, String password);
+    
     
 }
