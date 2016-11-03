@@ -42,7 +42,7 @@ public class LoginAuthenticatorBean implements LoginAuthenticator {
                 .getResultList();
         try {
             // See if values match
-            if (user.get(0).getPassword().equals(password) && user.get(0).getIsAdmin() == 1) {
+            if (user.get(0).getPassword().equals(password) && user.get(0).getIsTeacher() == 1) {
                 this.user = user.get(0);
                 System.out.println(user + "successfully validated");
                 return true;

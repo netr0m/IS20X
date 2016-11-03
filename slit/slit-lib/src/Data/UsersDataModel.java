@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database;
+package Data;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  *
  * @author Morten
  */
-@Entity
 public class UsersDataModel implements Serializable{
     private int userID; 
     private String fName; 
@@ -23,15 +18,7 @@ public class UsersDataModel implements Serializable{
     private String username;
     private String password;
     private String email;
-    private String userrole;
-
-    public int getID() {
-        return userID;
-    }
-
-    public void setID(int userID) {
-        this.userID = userID;
-    }
+    private int isTeacher;
 
     public String getFirstName() {
         return fName;
@@ -72,6 +59,20 @@ public class UsersDataModel implements Serializable{
     public void setMail(String email) {
         this.email = email;
     }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
     
+    public int getIsTeacher() {
+        return isTeacher;
+    }
     
+    public void setIsTeacher(int isTeacher) {
+        this.isTeacher = isTeacher;
+    }
 }
