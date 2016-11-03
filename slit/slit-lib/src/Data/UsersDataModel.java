@@ -40,7 +40,7 @@ public class UsersDataModel implements Serializable{
         return username;
     }
     
-    public void setUsername() {
+    public void setUsername(String username) {
         this.username = username;
     }
 
