@@ -9,7 +9,7 @@ import javax.ejb.Remote;
 
 /**
  *
- * @author InWhi
+ * @author Morten
  */
 @Remote
 public interface LoginAuthenticatorBeanRemote {

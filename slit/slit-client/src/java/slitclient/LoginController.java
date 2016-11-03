@@ -7,13 +7,13 @@ package slitclient;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import auth.LoginAuthenticator;
+import javafx.scene.control.Button;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -31,6 +31,8 @@ public class LoginController implements Initializable, ControlledScreen {
     PasswordField password;
     @FXML
     Label errorMessage;
+    @FXML
+    Button login;
     
     private Main application;
     public boolean teachermode = false;
@@ -48,7 +50,7 @@ public class LoginController implements Initializable, ControlledScreen {
         myController = screenParent;
     }
     @FXML
-    public void goToMain(ActionEvent event) {
+    public void goToMain() {
         if (checkLoginAuthentication()
                 .authenticate(username.getText(), password.getText())) {
             errorMessage.setText("Velkommen, " + username.getText());
@@ -59,10 +61,12 @@ public class LoginController implements Initializable, ControlledScreen {
             errorMessage.setText("Feil brukernavn/passord");
         }
     }
+    @FXML
     public static LoginAuthenticator checkLoginAuthentication() {
         try {
             Context c = new InitialContext();
-            return (LoginAuthenticator) c.lookup("java:comp/env/LoginAuthenticatorBean");
+            //return (LoginAuthenticator) c.lookup("java:comp/env/LoginAuthenticatorBean");
+            return (LoginAuthenticator) c.lookup("java:global/slit-ear/slit-ejb/LoginAuthenticatorBean");
         } catch (NamingException ne) {
             throw new RuntimeException(ne);
         }

@@ -14,6 +14,7 @@ import java.util.HashMap;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import javax.ejb.Remote;
 import javax.persistence.TypedQuery;
 
 /**
@@ -64,5 +65,5 @@ public class LoginAuthenticatorBean implements LoginAuthenticator {
         {
             e.printStackTrace();
         }
-    }
+    }    
 }
