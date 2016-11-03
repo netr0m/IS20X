@@ -5,19 +5,17 @@
  */
 package slitclient;
 
+import Data.UsersDataModel;
+import Framework.UserManager;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import auth.LoginAuthenticator;
 import javafx.scene.control.Button;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 /**
  * FXML Controller class
  *
@@ -33,6 +31,8 @@ public class LoginController implements Initializable, ControlledScreen {
     Label errorMessage;
     @FXML
     Button login;
+    
+    UserManager user = new UserManager();
     
     private Main application;
     public boolean teachermode = false;
@@ -51,17 +51,36 @@ public class LoginController implements Initializable, ControlledScreen {
     }
     @FXML
     public void goToMain() {
-        if (checkLoginAuthentication()
-                .authenticate(username.getText(), password.getText())) {
-            errorMessage.setText("Velkommen, " + username.getText());
-            myController.setScreen(Main.teacherMainID);
-            password.setText("");
-            username.setText("");
-    } else {
-            errorMessage.setText("Feil brukernavn/passord");
+        if(!this.password.getText().isEmpty() && !this.username.getText().isEmpty())
+        {            
+            UsersDataModel userModule = user.loginUser(this.username.getText(), this.password.getText());
+            
+            if(userModule.getUsername() != null)
+            {
+                this.errorMessage.setText("Velkommen, " + username);
+                
+                try 
+                {
+                    myController.setScreen(Main.teacherMainID);
+                }
+                catch(Exception e) 
+                {
+                     this.errorMessage.setText(e.getMessage()); 
+                }
+                
+            }
+            else 
+            {
+                this.errorMessage.setText("Feil brukernavn/passord.");
+            }
+            
+        }
+        else 
+        {
+            this.errorMessage.setText("Begge feltene må fylles ut.");
         }
     }
-    @FXML
+/*    @FXML
     public static LoginAuthenticator checkLoginAuthentication() {
         try {
             Context c = new InitialContext();
@@ -70,5 +89,5 @@ public class LoginController implements Initializable, ControlledScreen {
         } catch (NamingException ne) {
             throw new RuntimeException(ne);
         }
-    }
+    }*/
 }

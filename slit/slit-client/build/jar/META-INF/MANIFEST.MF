@@ -2,6 +2,7 @@ Manifest-Version: 1.0
 Ant-Version: Apache Ant 1.9.4
 Created-By: 1.8.0_77-b03 (Oracle Corporation)
 X-COMMENT: Main-Class will be added automatically by build
-Class-Path: lib/shared-lib-project-name.jar
+Class-Path: slit-lib.jar lib/slit-lib.jar javaee-api-7.0.jar lib/javae
+ e-api-7.0.jar 
 Main-Class: slitclient.Main
 
