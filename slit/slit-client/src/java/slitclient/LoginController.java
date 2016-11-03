@@ -8,8 +8,6 @@ package slitclient;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
@@ -22,6 +20,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import auth.LoginAuthenticator;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  * FXML Controller class
@@ -31,7 +33,7 @@ import javafx.scene.control.TextInputDialog;
 public class LoginController implements Initializable, ControlledScreen {
     
     @FXML
-    TextField userId;
+    TextField username;
     @FXML
     PasswordField password;
     @FXML
@@ -47,135 +49,29 @@ public class LoginController implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String dbURL = "jdbc:mysql://localhost:3306/uia";
-        String dbUsername = "root";
-        String dbPassword = "root";
-        
-        try (Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword)) {
-            
-            if (conn != null) {
-                System.out.println("Connected to " + dbURL);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
     }    
     
     public void setScreenParent(ScreensController screenParent) {
         myController = screenParent;
     }
-    
     @FXML
-    private void goToMain(ActionEvent event) {
-        if (userLogging(userId.getText(), password.getText())) {
-            errorMessage.setText("Velkommen, " + userId.getText());
-            if (userId.getText().equals(password.getText())) {
-                createNewPasswordDialog();
-            }
-            if (teachermode == true) {
-                System.out.println("SUKSESS TEACHERMASTER");
-                myController.setScreen(Main.teacherMainID);
-            }
-            else {
-                System.out.println("Hvis du no kan gi karaktera, e nå galt...");
-                myController.setScreen(Main.studentMainID);
-            }
+    public void goToMain(ActionEvent event) {
+        if (checkLoginAuthentication()
+                .authenticate(username.getText(), password.getText())) {
+            errorMessage.setText("Velkommen, " + username.getText());
+            myController.setScreen(Main.teacherMainID);
             password.setText("");
-            userId.setText("");
-        } else {
+            username.setText("");
+    } else {
             errorMessage.setText("Feil brukernavn/passord");
         }
     }
-    public boolean userLogging(String userId, String password){
-        String dbUsername = "root";
-        String dbPassword = "root";
-        String dbURL = "jdbc:mysql://localhost:3306/uia";
-        boolean login = false;
-        
+    public static LoginAuthenticator checkLoginAuthentication() {
         try {
-            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-            String sql = "SELECT username, password, userrole FROM user WHERE username='" + userId + "' AND password='" + password + "';";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            
-            while (rs.next()) {
-                String user = rs.getString("username");
-                currentUser = user;
-                String pass = rs.getString("password");
-                String role = rs.getString("userrole");
-                
-                    if ((userId.equals(user)) && (password.equals(pass))) {
-                        login = true;
-                        if (role.equals(("TEACHER"))) {
-                            teachermode = true;
-                        } else if (role.equals(("ASSISTANT"))) {
-                            teachermode = true;
-                        } else if (role.equals(("ADMIN"))) {
-                            teachermode = true;
-                        } else {
-                            teachermode = false;
-                        }
-                        System.out.println(role+"MODE");
-            }
-            rs.close();
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
+            Context c = new InitialContext();
+            return (LoginAuthenticator) c.lookup("java:comp/env/LoginAuthenticatorBean");
+        } catch (NamingException ne) {
+            throw new RuntimeException(ne);
         }
-        return login; 
-    }
-    
-    void userLogout(){
-        errorMessage.setText("");
-        teachermode = false;
-    }
-    
-    public boolean teacherMode() {
-        return teachermode;
-    }
-    
-    public void setTeacherMode(boolean mode) {
-        this.teachermode = mode;
-    }
-    
-    public void setErrorMessage(String text) {
-        errorMessage.setText(text);
-    }
-    
-    public String getUser() {
-        return currentUser;
-    }
-    
-    public void changePassword(String newPassword) {
-        String dbUsername = "root";
-        String dbPassword = "root";
-        String dbURL = "jdbc:mysql://localhost:3306/uia";
-        try {
-            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-            Statement statement = (Statement) conn.createStatement();
-            statement.execute("UPDATE user SET password='" + newPassword + "' WHERE username='" + userId.getText() + "';");
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-    }
-    
-    protected Dialog createNewPasswordDialog() {
-        TextInputDialog updatePass = new TextInputDialog("");
-        updatePass.setTitle("Vennligst skriv inn et nytt passord");
-        updatePass.getDialogPane().setContentText("Nytt Passord:");
-        updatePass.setHeaderText("Vennligst bytt ditt passord");
-        updatePass.showAndWait()
-                .ifPresent(new Consumer<String>() {
-            @Override
-            public void accept(String response) {
-                if (response.isEmpty()) {
-                    System.out.println("Passord ble ikke endret");
-                } else {
-                    System.out.println("Det nye passordet er: " + response);
-                    changePassword(response);
-                }
-            }
-        });
-        return updatePass;
     }
 }

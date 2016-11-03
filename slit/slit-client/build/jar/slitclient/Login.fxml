@@ -18,7 +18,7 @@
             <Font name="Yu Gothic Light" size="23.0" />
           </font>
         </Label>
-            <TextField fx:id="userId" alignment="CENTER" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" promptText="Brukernavn">
+            <TextField fx:id="username" alignment="CENTER" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" promptText="Brukernavn">
                <font>
                   <Font name="Yu Gothic UI Light" size="15.0" />
                </font>
