@@ -6,7 +6,7 @@
 package slitclient;
 
 import Data.UsersDataModel;
-import Framework.UserManager;
+import Framework.Managers.UserManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;

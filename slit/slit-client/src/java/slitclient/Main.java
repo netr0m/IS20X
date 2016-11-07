@@ -5,6 +5,10 @@
  */
 package slitclient;
 
+import Data.ModuleDataModel;
+import Framework.Managers.UserManager;
+import Framework.Managers.ModuleManager;
+import java.util.List;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -32,6 +36,7 @@ public class Main extends Application {
     public static String newuserFile = "NewUser.fxml";
     public static String deliveryID = "delivery";
     public static String deliveryFile = "Delivery.fxml";
+    
     
     @Override
     public void start(Stage primaryStage) {
