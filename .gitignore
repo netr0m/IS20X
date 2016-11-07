@@ -8,3 +8,11 @@
 /slit/slit-ear/slit-ear-ejb/nbproject/private/
 /slit/slit-lib/nbproject/private/
 /slit/slit-ejb/nbproject/private/
+/slit/slit-lib/build/
+/slit/slit-lib/dist/
+/slit/slit-ear/build/
+/slit/slit-ear/dist/
+/slit/slit-ejb/build/
+/slit/slit-ejb/dist/
+/slit/slit-client/build/
+/slit/slit-client/dist/
