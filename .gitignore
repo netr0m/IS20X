@@ -1,0 +1,12 @@
+/SlitClient/build/
+/SlitClient/dist/
+/SlitClient/nbproject/private/
+/SlitServer/build/
+/SlitServer/dist/
+/SlitServer/SlitServer-ejb/build/
+/SlitServer/SlitServer-ejb/dist/
+/SlitServer/SlitServer-ejb/nbproject/private/
+/SlitServer/nbproject/private/
+/SlitSharedLib/nbproject/private/
+/SlitSharedLib/build/
+/SlitSharedLib/dist/
