@@ -23,7 +23,8 @@ public class UserManager {
     private UsersModelSessionRemote lookupUsersModuleSessionRemote() {
         try {
             Context c = new InitialContext();
-            return (UsersModelSessionRemote) c.lookup("java:app/slit-ejb/UserModuleSession");
+            //return (UsersModelSessionRemote) c.lookup("java:global/slit-ejb/UserModuleSession");
+            return (UsersModelSessionRemote) c.lookup("java:global/slit-ejb/UserModuleSession");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

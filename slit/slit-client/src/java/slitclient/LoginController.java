@@ -9,7 +9,6 @@ import Data.UsersDataModel;
 import Framework.Managers.UserManager;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -35,7 +34,6 @@ public class LoginController implements Initializable, ControlledScreen {
     UserManager user = new UserManager();
     
     private Main application;
-    public boolean teachermode = false;
     public String currentUser;
 
     ScreensController myController;
@@ -57,11 +55,13 @@ public class LoginController implements Initializable, ControlledScreen {
             
             if(userModule.getUsername() != null)
             {
-                this.errorMessage.setText("Velkommen, " + username);
+                this.errorMessage.setText("Velkommen, " + username.getText());
                 
                 try 
                 {
-                    myController.setScreen(Main.teacherMainID);
+                    if (userModule.getIsTeacher()) {
+                        myController.setScreen(Main.teacherMainID);
+                    }
                 }
                 catch(Exception e) 
                 {

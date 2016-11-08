@@ -62,6 +62,11 @@ public class UserModuleSession implements UsersModelSessionRemote {
         
         try 
         {
+            System.out.println(username + " " + password);
+             
+            //Query query = em.createQuery("SELECT u FROM Users u WHERE u.username = :username AND u.password = :password");
+           
+                    
             Query query = em.createNamedQuery("Users.login", Users.class);
             
             query.setParameter("username", username);
