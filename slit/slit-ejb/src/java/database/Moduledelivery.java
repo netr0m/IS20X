@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author InWhi
+ * @author Morten
  */
 @Entity
 @Table(name = "moduledelivery")

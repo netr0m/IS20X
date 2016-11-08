@@ -10,7 +10,7 @@ CREATE TABLE Users
     username VARCHAR(64) NOT NULL,
     password VARCHAR(64) NOT NULL, 
     email VARCHAR(64) NOT NULL,
-    userrole VARCHAR(20) NOT NULL
+    isTeacher INT(1) NOT NULL DEFAULT 0
 );
 
 CREATE TABLE Module 
@@ -33,10 +33,10 @@ CREATE TABLE ModuleDelivery(
     CONSTRAINT moduleDelivery_user_fk FOREIGN KEY(userID) REFERENCES Users(userID)
 ); 
 
-INSERT INTO Users VALUES(null, 'Admin', 'UiA', 'admin', 'admin', 'admin@uia.no', 'ADMIN');
-INSERT INTO Users VALUES(null, 'Hallgeir', 'Nilsen', 'hallgeir', 'hallgeir', 'hallgeir@uia.no', 'TEACHER');
-INSERT INTO Users VALUES(null, 'Morten', 'Amundsen', 'mortea15', 'mortea15', 'mortea15@uia.no', 'STUDENT'); 
-INSERT INTO Users VALUES(null, 'Svenn-Roger', 'Sørensen', 'srsore15', 'srsore15', 'srsore15@uia.no', 'STUDENT');
+INSERT INTO Users VALUES(null, 'Admin', 'UiA', 'admin', 'admin', 'admin@uia.no', '1');
+INSERT INTO Users VALUES(null, 'Hallgeir', 'Nilsen', 'hallgeir', 'hallgeir', 'hallgeir@uia.no', '1');
+INSERT INTO Users VALUES(null, 'Morten', 'Amundsen', 'mortea15', 'mortea15', 'mortea15@uia.no', '0'); 
+INSERT INTO Users VALUES(null, 'Svenn-Roger', 'Sørensen', 'srsore15', 'srsore15', 'srsore15@uia.no', '0');
 
 INSERT INTO Module(moduleName, moduleSummary, moduleDescription) VALUES ('Module 1', 'Module 1 - Basic Introduction', 'Go to the gym, lift one weirdly shaped weightbar, and go home.'); 
 INSERT INTO Module(moduleName, moduleSummary, moduleDescription) VALUES ('Module 2', 'Module 2 - Get rekt', 'Yell to a man of ungodly size at the gym, expect a knockdown.'); 

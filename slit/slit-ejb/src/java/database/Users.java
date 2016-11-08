@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author InWhi
+ * @author Morten
  */
 @Entity
 @Table(name = "users")
@@ -77,7 +77,7 @@ public class Users implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "isTeacher")
-    private boolean isTeacher;
+    private int isTeacher;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private List<Moduledelivery> moduledeliveryList;
 
@@ -88,7 +88,7 @@ public class Users implements Serializable {
         this.userID = userID;
     }
 
-    public Users(Integer userID, String fName, String lName, String username, String password, String email, boolean isTeacher) {
+    public Users(Integer userID, String fName, String lName, String username, String password, String email, int isTeacher) {
         this.userID = userID;
         this.fName = fName;
         this.lName = lName;
@@ -146,11 +146,11 @@ public class Users implements Serializable {
         this.email = email;
     }
 
-    public boolean getIsTeacher() {
+    public int getIsTeacher() {
         return isTeacher;
     }
 
-    public void setIsTeacher(boolean isTeacher) {
+    public void setIsTeacher(int isTeacher) {
         this.isTeacher = isTeacher;
     }
 
