@@ -37,7 +37,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         // This sets the title of the window displayed
-        primaryStage.setTitle("SLIT");
+        primaryStage.setTitle("SLIT | UiA");
+        
         // Make window NOT resizable.
         primaryStage.setResizable(false);
         
@@ -71,5 +72,4 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
 }

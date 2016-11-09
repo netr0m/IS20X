@@ -63,8 +63,15 @@ public class LoginController implements Initializable, ControlledScreen {
                 {
                     if (userModule.getIsTeacher() == 1) {
                         myController.setScreen(Main.teacherMainID);
+                        username.setText("");
+                        password.setText("");
+                        errorMessage.setText("");
+                        
                     } else {
                         myController.setScreen(Main.studentMainID);
+                        username.setText("");
+                        password.setText("");
+                        errorMessage.setText("");
                     }
                 }
                 catch(Exception e) 

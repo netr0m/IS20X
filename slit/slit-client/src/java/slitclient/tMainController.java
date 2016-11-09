@@ -20,7 +20,7 @@ public class tMainController implements Initializable, ControlledScreen {
  
     private Main application;
     private LoginController loginscreen;
-    //private GradingController grading;
+    private GradingController grading;
 
     ScreensController myController;
     /**
