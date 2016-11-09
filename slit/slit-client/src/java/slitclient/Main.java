@@ -5,10 +5,6 @@
  */
 package slitclient;
 
-import Data.ModuleDataModel;
-import Framework.Managers.UserManager;
-import Framework.Managers.ModuleManager;
-import java.util.List;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;

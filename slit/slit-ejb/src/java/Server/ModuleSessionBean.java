@@ -137,9 +137,9 @@ public class ModuleSessionBean implements ModuleSessionBeanRemote{
      * @return String
      */
     @Override
-    public String getModuleNameFromId(int id) 
+    public String getModuleNameFromID(int ID) 
     {
-        Module module = em.find(Module.class, id);
+        Module module = em.find(Module.class, ID);
         
         return module.getModuleName(); 
     }
@@ -150,9 +150,9 @@ public class ModuleSessionBean implements ModuleSessionBeanRemote{
      * @return ModuleDataModel
      */
     @Override 
-    public ModuleDataModel getModule(int id) 
+    public ModuleDataModel getModule(int ID) 
     {
-        Module module = em.find(Module.class, id);
+        Module module = em.find(Module.class, ID);
         
         return this.convertModule(module); 
     }

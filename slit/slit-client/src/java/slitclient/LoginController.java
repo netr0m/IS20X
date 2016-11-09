@@ -9,13 +9,13 @@ import Data.UsersDataModel;
 import Framework.Managers.UserManager;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
 /**
  * FXML Controller class
  *
@@ -54,47 +54,37 @@ public class LoginController implements Initializable, ControlledScreen {
         if(!this.password.getText().isEmpty() && !this.username.getText().isEmpty())
         {            
             UsersDataModel userModule = user.loginUser(this.username.getText(), this.password.getText());
-            
             if(userModule.getUsername() != null)
             {
+                this.errorMessage.setTextFill(Color.web("#13c113"));
                 this.errorMessage.setText("Velkommen, " + username.getText());
                 
                 try 
                 {
                     if (userModule.getIsTeacher() == 1) {
-                        System.out.println(userModule.getIsTeacher());
                         myController.setScreen(Main.teacherMainID);
                     } else {
-                        //myController.setScreen(Main.studentMainID);
-                        System.out.println(userModule.getIsTeacher());
-                        System.out.println("Students fuck up yo party");
+                        myController.setScreen(Main.studentMainID);
                     }
                 }
                 catch(Exception e) 
                 {
-                     this.errorMessage.setText(e.getMessage()); 
+                    this.errorMessage.setTextFill(Color.web("#da0d0d"));
+                    this.errorMessage.setText(e.getMessage()); 
                 }
                 
             }
             else 
             {
+                this.errorMessage.setTextFill(Color.web("#da0d0d"));
                 this.errorMessage.setText("Feil brukernavn/passord.");
             }
             
         }
         else 
         {
+            this.errorMessage.setTextFill(Color.web("#da0d0d"));
             this.errorMessage.setText("Begge feltene må fylles ut.");
         }
     }
-/*    @FXML
-    public static LoginAuthenticator checkLoginAuthentication() {
-        try {
-            Context c = new InitialContext();
-            //return (LoginAuthenticator) c.lookup("java:comp/env/LoginAuthenticatorBean");
-            return (LoginAuthenticator) c.lookup("java:global/slit-ear/slit-ejb/LoginAuthenticatorBean");
-        } catch (NamingException ne) {
-            throw new RuntimeException(ne);
-        }
-    }*/
 }

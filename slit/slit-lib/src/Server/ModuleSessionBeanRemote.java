@@ -22,7 +22,7 @@ public interface ModuleSessionBeanRemote {
     
     List<String> getModuleNames();
     
-    String getModuleNameFromId(int ID); 
+    String getModuleNameFromID(int ID); 
     
     ModuleDataModel getModule(int ID) ;
     

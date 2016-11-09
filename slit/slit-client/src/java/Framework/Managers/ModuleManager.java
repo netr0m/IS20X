@@ -46,14 +46,14 @@ public class ModuleManager {
         return this.lookupModuleSessionBeanRemote().getModuleNames();
     }
     
-    public String getModuleNameFromId(int id) 
+    public String getModuleNameFromID(int ID) 
     {
-        return this.lookupModuleSessionBeanRemote().getModuleNameFromId(id);
+        return this.lookupModuleSessionBeanRemote().getModuleNameFromID(ID);
     }
     
-    public ModuleDataModel getModule(int id) 
+    public ModuleDataModel getModule(int ID) 
     {
-        return this.lookupModuleSessionBeanRemote().getModule(id);
+        return this.lookupModuleSessionBeanRemote().getModule(ID);
     }
     
     public ModuleDataModel getModuleByName(String moduleName)

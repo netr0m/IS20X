@@ -16,11 +16,11 @@ import javafx.fxml.Initializable;
  *
  * @author Morten
  */
-public class tMainController implements Initializable, ControlledScreen {
+public class sMainController implements Initializable, ControlledScreen {
  
     private Main application;
     private LoginController loginscreen;
-    //private GradingController grading;
+    private GradingController grading;
 
     ScreensController myController;
     /**
@@ -35,10 +35,6 @@ public class tMainController implements Initializable, ControlledScreen {
         myController = screenParent;
     }
 
-    /**
-     * De følgende metodene valgte vi å beholde på klient-siden av programmet,
-     * da disse kun utfører navigasjon mellom ulike deler av programmet.
-    */
     @FXML
     public void logOut(ActionEvent event) {
         myController.setScreen(Main.loginID);
@@ -47,16 +43,6 @@ public class tMainController implements Initializable, ControlledScreen {
     @FXML
     public void goToOverlook(ActionEvent event) {
         myController.setScreen(Main.overlookID);
-    }
-    
-    @FXML
-    public void goToCreateUser(ActionEvent event) {
-        myController.setScreen(Main.newuserID);
-    }
-    
-    @FXML
-    public void goToGrading(ActionEvent event) {
-        myController.setScreen(Main.gradingID);
     }
     
     @FXML

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane id="AnchorPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="slitclient.OverlookController">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="1297.0">
+        <items>
+          <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="55.0" minHeight="25.0" minWidth="55.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="25.0" prefWidth="55.0" text="Tilbake" textAlignment="CENTER">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="12.0" />
+               </font></Button>
+            <TextField fx:id="searchBar" alignment="CENTER" maxHeight="25.0" maxWidth="290.0" minHeight="25.0" minWidth="290.0" prefHeight="25.0" prefWidth="290.0" promptText="Søk..">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="15.0" />
+               </font>
+            </TextField>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="11.0" maxHeight="25.0" maxWidth="85.0" minHeight="25.0" minWidth="55.0" mnemonicParsing="false" onAction="#loadData" prefHeight="25.0" prefWidth="85.0" text="Last inn data" textAlignment="CENTER">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="12.0" />
+               </font>
+            </Button>
+        </items>
+      </ToolBar>
+      <ScrollPane layoutY="40.0" prefHeight="680.0" prefWidth="1286.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="40.0">
+         <content>
+            <TableView fx:id="overLookTable" prefHeight="701.0" prefWidth="1488.0">
+              <columns>
+            <TableColumn fx:id="columnName" maxWidth="250.0" minWidth="180.0" prefWidth="180.0" text="Navn" />
+            <TableColumn fx:id="columnMod1" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 1" />
+            <TableColumn fx:id="columnMod2" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 2" />
+            <TableColumn fx:id="columnMod3" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 3" />
+            <TableColumn fx:id="columnMod4" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 4" />
+            <TableColumn fx:id="columnMod5" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 5" />
+            <TableColumn fx:id="columnMod6" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 6" />
+            <TableColumn fx:id="columnMod7" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 7" />
+            <TableColumn fx:id="columnMod8" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 8" />
+            <TableColumn fx:id="columnMod9" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 9" />
+            <TableColumn fx:id="columnMod10" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 10" />
+            <TableColumn fx:id="columnMod11" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 11" />
+            <TableColumn fx:id="columnMod12" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 12" />
+            <TableColumn fx:id="columnMod13" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 13" />
+            <TableColumn fx:id="columnMod14" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 14" />
+        </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
