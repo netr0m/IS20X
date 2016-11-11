@@ -35,8 +35,6 @@ public class LoginController implements Initializable, ControlledScreen {
     UserManager user = new UserManager();
     
     private Main application;
-    public boolean teachermode = false;
-    public String currentUser;
 
     ScreensController myController;
     /**
@@ -61,14 +59,21 @@ public class LoginController implements Initializable, ControlledScreen {
                 
                 try 
                 {
-                    if (userModule.getIsTeacher() == 1) {
-                        myController.setScreen(Main.teacherMainID);
-                        username.setText("");
-                        password.setText("");
-                        errorMessage.setText("");
+                    if (!username.getText().equals(password.getText())) {
+                        if (userModule.getIsTeacher() == 1) {
+                            myController.setScreen(Main.teacherMainID);
+                            username.setText("");
+                            password.setText("");
+                            errorMessage.setText("");
                         
+                        } else {
+                            myController.setScreen(Main.studentMainID);
+                            username.setText("");
+                            password.setText("");
+                            errorMessage.setText("");
+                        }
                     } else {
-                        myController.setScreen(Main.studentMainID);
+                        myController.setScreen(Main.firstLoginID);
                         username.setText("");
                         password.setText("");
                         errorMessage.setText("");

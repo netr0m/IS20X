@@ -21,4 +21,6 @@ public interface UsersModelSessionRemote {
     UsersDataModel loginUser(String username, String password);
     
     List<UsersDataModel> getAllUsers();
+    
+    void updatePassword(UsersDataModel obj, String password);
 }

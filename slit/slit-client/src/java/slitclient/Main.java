@@ -32,6 +32,8 @@ public class Main extends Application {
     public static String newuserFile = "NewUser.fxml";
     public static String deliveryID = "delivery";
     public static String deliveryFile = "Delivery.fxml";
+    public static String firstLoginID = "firstLogin";
+    public static String firstLoginFile = "FirstLogin.fxml";
     
     
     @Override
@@ -55,6 +57,7 @@ public class Main extends Application {
         mainContainer.loadScreen(Main.gradingID, Main.gradingFile);
         mainContainer.loadScreen(Main.newuserID, Main.newuserFile);
         mainContainer.loadScreen(Main.deliveryID, Main.deliveryFile);
+        mainContainer.loadScreen(Main.firstLoginID, Main.firstLoginFile);
         
         // Finally, we set a screen for the window once it opens up
         mainContainer.setScreen(Main.loginID);

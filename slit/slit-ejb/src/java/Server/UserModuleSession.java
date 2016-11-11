@@ -62,12 +62,7 @@ public class UserModuleSession implements UsersModelSessionRemote {
         UsersDataModel retModule = new UsersDataModel(); 
         
         try 
-        {
-            System.out.println(username + " " + password);
-             
-            //Query query = em.createQuery("SELECT u FROM Users u WHERE u.username = :username AND u.password = :password");
-           
-                    
+        { 
             Query query = em.createNamedQuery("Users.login", Users.class);
             
             query.setParameter("username", username);
@@ -91,7 +86,7 @@ public class UserModuleSession implements UsersModelSessionRemote {
         
         try 
         {
-            Query query = em.createNamedQuery("Users.findAll", Users.class);
+            Query query = em.createNamedQuery("Users.findByIsStudent", Users.class);
             
             List<Users> users = query.getResultList(); 
             
@@ -109,6 +104,14 @@ public class UserModuleSession implements UsersModelSessionRemote {
     
     public void persist(Object object) {
         em.persist(object);
+    }
+    
+    @Override
+    public void updatePassword(UsersDataModel obj, String password) {
+        Users user = em.find(Users.class, obj.getUserID());
+        System.out.println(user.getUsername());
+        user.setPassword(password);
+        em.merge(user);
     }
     
 }
