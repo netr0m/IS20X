@@ -28,6 +28,5 @@
             </TextField>
         </items>
       </ToolBar>
-       <!-- <ListView fx:id="MainListView" layoutY="40.0" prefHeight="682.0" prefWidth="1280.0" /> -->
    </children>
 </AnchorPane>
