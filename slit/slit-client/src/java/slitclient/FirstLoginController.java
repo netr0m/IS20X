@@ -56,10 +56,13 @@ public class FirstLoginController implements Initializable, ControlledScreen {
     @FXML
     public void goToMain() {
         if (checkMatchingPasswords()) {
+            this.errorMessage.setTextFill(Color.web("#13c113"));
             errorMessage.setText("Nytt passord lagret!");
             //lookupUserBeanRemote().updatePassword(obj, password1.getText());
             //if (obj.getIsTeacher() == 1) {
-                myController.setScreen(Main.teacherMainID);/*
+                myController.setScreen(Main.teacherMainID);
+                password1.setText("");
+                password2.setText("");/*
             } else {
                 myController.setScreen(Main.studentMainID);
             }*/

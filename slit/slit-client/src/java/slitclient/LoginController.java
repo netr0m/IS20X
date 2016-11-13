@@ -63,30 +63,31 @@ public class LoginController implements Initializable, ControlledScreen {
                 {
                     if (!username.getText().equals(password.getText())) {
                         if (userModule.getIsTeacher() == 1) {
+                            System.out.println(userModule.getIsTeacher());
                             myController.setScreen(Main.teacherMainID);
                             username.setText("");
                             password.setText("");
-                            errorMessage.setText("");
+                            //errorMessage.setText("");
                         
                         } else {
                             myController.setScreen(Main.studentMainID);
                             username.setText("");
                             password.setText("");
-                            errorMessage.setText("");
+                            //errorMessage.setText("");
                         }
                     } else {
                         myController.setScreen(Main.firstLoginID);
                         username.setText("");
                         password.setText("");
-                        errorMessage.setText("");
+                        //errorMessage.setText("");
                     }
+                                        
                 }
                 catch(Exception e) 
                 {
                     this.errorMessage.setTextFill(Color.web("#da0d0d"));
                     this.errorMessage.setText(e.getMessage()); 
                 }
-                
             }
             else 
             {

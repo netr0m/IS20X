@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
@@ -28,6 +29,8 @@ public class OverlookController implements Initializable, ControlledScreen {
     private Main application;
     @FXML
     private ListView<String> MainListView;
+    @FXML
+    private TableView<String> tableView;
 
     ScreensController myController;
     /**

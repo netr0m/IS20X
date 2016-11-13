@@ -5,10 +5,9 @@ package slitclient;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import Data.ModuleDeliveryDataModel;
-import Data.UsersDataModel;
+import Data.ModuleDataModel;
 import Framework.Managers.ModuleManager;
-import Framework.Managers.UserManager;
+import database.Module;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
@@ -18,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -27,10 +27,11 @@ import javafx.scene.control.TableView;
 public class ApprovalController implements Initializable, ControlledScreen {
     
     LoginController loginCtrl;
+    private ObservableList<String> data;
 
     private Main application;
     @FXML
-    private TableView<String> approvalView;
+    private TableView<String> overLookTable;
     @FXML
     private TableColumn<String, String> nameCol;
     @FXML
@@ -49,14 +50,21 @@ public class ApprovalController implements Initializable, ControlledScreen {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ModuleManager manager = new ModuleManager();
+        data = FXCollections.observableArrayList();
         
-        ObservableList<String> approvals = FXCollections.observableArrayList();
+        ObservableList<String> items = FXCollections.observableArrayList();
         
-        for (ModuleDeliveryDataModel delivery : manager.getAllUsers()) {
-            approvals.add(user.getUsername());
+        for (ModuleDataModel module : manager.getModules()) {
+            data.add(module.getModuleName());
+            //items.add(user.getUsername());
         }
+        this.overLookTable.setItems(items);
         
-        this.nameCol.setItems(approvals, "hi");
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        moduleCol.setCellValueFactory(new PropertyValueFactory<>("module"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        commentCol.setCellValueFactory(new PropertyValueFactory<>("comment"));
+        fileNameCol.setCellValueFactory(new PropertyValueFactory<>("file"));
     }
     
     public void setScreenParent(ScreensController screenParent){
