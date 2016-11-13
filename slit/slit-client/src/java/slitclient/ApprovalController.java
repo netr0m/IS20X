@@ -5,6 +5,7 @@ package slitclient;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Data.ModuleDeliveryDataModel;
 import Data.UsersDataModel;
 import Framework.Managers.ModuleManager;
 import Framework.Managers.UserManager;
@@ -55,7 +56,7 @@ public class ApprovalController implements Initializable, ControlledScreen {
             approvals.add(user.getUsername());
         }
         
-        this.approvalView.setItems(approvals);
+        this.nameCol.setItems(approvals, "hi");
     }
     
     public void setScreenParent(ScreensController screenParent){
