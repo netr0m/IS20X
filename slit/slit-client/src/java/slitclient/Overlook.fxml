@@ -14,7 +14,6 @@
 
 <AnchorPane id="AnchorPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="slitclient.OverlookController">
    <children>
-      <ListView fx:id="MainListView" layoutX="14.0" layoutY="40.0" prefHeight="680.0" prefWidth="1253.0" />
       <ToolBar prefHeight="40.0" prefWidth="1297.0">
         <items>
           <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="55.0" minHeight="25.0" minWidth="55.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="25.0" prefWidth="55.0" text="Tilbake" textAlignment="CENTER">
@@ -28,5 +27,28 @@
             </TextField>
         </items>
       </ToolBar>
+      <ScrollPane layoutX="-1.0" layoutY="40.0" prefHeight="690.0" prefWidth="1297.0">
+         <content>
+            <TableView fx:id="overLookTable" prefHeight="701.0" prefWidth="1488.0">
+               <columns>
+                  <TableColumn fx:id="columnName" maxWidth="250.0" minWidth="180.0" prefWidth="180.0" text="Navn" />
+                  <TableColumn fx:id="columnMod1" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 1" />
+                  <TableColumn fx:id="columnMod2" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 2" />
+                  <TableColumn fx:id="columnMod3" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 3" />
+                  <TableColumn fx:id="columnMod4" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 4" />
+                  <TableColumn fx:id="columnMod5" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 5" />
+                  <TableColumn fx:id="columnMod6" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 6" />
+                  <TableColumn fx:id="columnMod7" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 7" />
+                  <TableColumn fx:id="columnMod8" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 8" />
+                  <TableColumn fx:id="columnMod9" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 9" />
+                  <TableColumn fx:id="columnMod10" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 10" />
+                  <TableColumn fx:id="columnMod11" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 11" />
+                  <TableColumn fx:id="columnMod12" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 12" />
+                  <TableColumn fx:id="columnMod13" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 13" />
+                  <TableColumn fx:id="columnMod14" maxWidth="90.0" minWidth="85.0" prefWidth="85.0" text="Modul 14" />
+               </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

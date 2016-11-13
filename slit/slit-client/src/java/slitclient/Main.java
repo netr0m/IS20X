@@ -34,6 +34,8 @@ public class Main extends Application {
     public static String deliveryFile = "Delivery.fxml";
     public static String firstLoginID = "firstLogin";
     public static String firstLoginFile = "FirstLogin.fxml";
+    public static String approvalID = "approval";
+    public static String approvalFile = "Approval.fxml";
     
     
     @Override

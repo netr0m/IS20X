@@ -33,13 +33,22 @@
                   <Font name="Yu Gothic UI Light" size="13.0" />
                </font>
             </Button>
-            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="600.0">
+            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="1260.0">
                <children>
-                  <Label id="label2" fx:id="errorMessage" alignment="CENTER" contentDisplay="CENTER" textFill="#da0d0d">
-                     <font>
-                        <Font name="Yu Gothic Regular" size="14.0" />
-                     </font>
-                  </Label>
+                  <VBox alignment="CENTER" prefHeight="54.0" prefWidth="656.0" spacing="10.0">
+                     <children>
+                        <Label id="label2" fx:id="errorMessage" alignment="CENTER" contentDisplay="CENTER" textFill="#da0d0d">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label id="label2" fx:id="errorMessage1" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="133.0" text="Glemt passord?" textFill="#8d8d8d">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
       </children>
