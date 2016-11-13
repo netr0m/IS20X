@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane id="AnchorPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="slitclient.OverlookController">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="1297.0">
+        <items>
+          <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="55.0" minHeight="25.0" minWidth="55.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="25.0" prefWidth="55.0" text="Tilbake" textAlignment="CENTER">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="12.0" />
+               </font></Button>
+            <TextField fx:id="searchBar" alignment="CENTER" maxHeight="25.0" maxWidth="290.0" minHeight="25.0" minWidth="290.0" prefHeight="25.0" prefWidth="290.0" promptText="Søk..">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="15.0" />
+               </font>
+            </TextField>
+        </items>
+      </ToolBar>
+      <ScrollPane layoutX="-1.0" layoutY="40.0" prefHeight="690.0" prefWidth="1297.0">
+         <content>
+            <TableView fx:id="overLookTable" prefHeight="701.0" prefWidth="1488.0">
+               <columns>
+                  <TableColumn fx:id="nameCol" maxWidth="402.0" minWidth="180.0" prefWidth="325.0" text="Innlevert av" />
+                  <TableColumn fx:id="moduleCol" maxWidth="321.0" minWidth="85.0" prefWidth="179.0" text="Modul" />
+                  <TableColumn fx:id="dateCol" maxWidth="301.0" minWidth="64.0" prefWidth="114.0" text="Dato innlevert" />
+                  <TableColumn fx:id="commentCol" maxWidth="594.0" minWidth="85.0" prefWidth="387.0" text="Elevens kommentar" />
+                  <TableColumn fx:id="fileNameCol" maxWidth="535.0" minWidth="85.0" prefWidth="278.0" text="Filnavn" />
+               </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

@@ -57,9 +57,9 @@ public class FirstLoginController implements Initializable, ControlledScreen {
     public void goToMain() {
         if (checkMatchingPasswords()) {
             errorMessage.setText("Nytt passord lagret!");
-            lookupUserBeanRemote().updatePassword(obj, password1.getText());
-            /*if (obj.getIsTeacher() == 1) {
-                myController.setScreen(Main.teacherMainID);
+            //lookupUserBeanRemote().updatePassword(obj, password1.getText());
+            //if (obj.getIsTeacher() == 1) {
+                myController.setScreen(Main.teacherMainID);/*
             } else {
                 myController.setScreen(Main.studentMainID);
             }*/

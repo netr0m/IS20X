@@ -31,6 +31,8 @@ public class LoginController implements Initializable, ControlledScreen {
     Label errorMessage;
     @FXML
     Button login;
+    @FXML
+    Label forgottenPassword;
     
     UserManager user = new UserManager();
     
