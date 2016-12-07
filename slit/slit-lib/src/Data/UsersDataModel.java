@@ -18,7 +18,7 @@ public class UsersDataModel implements Serializable{
     private String username;
     private String password;
     private String email;
-    private int isTeacher;
+    private int userrole;
 
     public String getFirstName() {
         return fName;
@@ -68,11 +68,11 @@ public class UsersDataModel implements Serializable{
         this.userID = userID;
     }
     
-    public int getIsTeacher() {
-        return isTeacher;
+    public int getUserrole() {
+        return userrole;
     }
     
-    public void setIsTeacher(int isTeacher) {
-        this.isTeacher = isTeacher;
+    public void setUserrole(int role) {
+        this.userrole = role;
     }
 }

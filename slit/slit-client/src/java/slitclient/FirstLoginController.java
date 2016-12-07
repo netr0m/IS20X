@@ -21,6 +21,7 @@ import javafx.scene.paint.Color;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import slitclient.UserType;
 /**
  * FXML Controller class
  *
@@ -58,14 +59,15 @@ public class FirstLoginController implements Initializable, ControlledScreen {
         if (checkMatchingPasswords()) {
             this.errorMessage.setTextFill(Color.web("#13c113"));
             errorMessage.setText("Nytt passord lagret!");
+            System.out.println(UserType.userrole);
             //lookupUserBeanRemote().updatePassword(obj, password1.getText());
-            //if (obj.getIsTeacher() == 1) {
+            if (UserType.userrole == 1 || UserType.userrole == 2 || UserType.userrole == 3) {
                 myController.setScreen(Main.teacherMainID);
                 password1.setText("");
-                password2.setText("");/*
-            } else {
+                password2.setText("");
+            } else if (UserType.userrole == 4) {
                 myController.setScreen(Main.studentMainID);
-            }*/
+            }
         } else {
             this.errorMessage.setTextFill(Color.web("#da0d0d"));
             errorMessage.setText("Begge passordene må være like, og bestå av minimum 5 tegn.");

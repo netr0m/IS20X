@@ -61,15 +61,16 @@ public class LoginController implements Initializable, ControlledScreen {
                 
                 try 
                 {
+                    UserType currUserrole = new UserType(userModule.getUserrole());
+                    System.out.println(currUserrole.getUserrole());
                     if (!username.getText().equals(password.getText())) {
-                        if (userModule.getIsTeacher() == 1) {
-                            System.out.println(userModule.getIsTeacher());
+                        if (currUserrole.getUserrole() == 1 || currUserrole.getUserrole() == 2 || currUserrole.getUserrole() == 3) {
                             myController.setScreen(Main.teacherMainID);
                             username.setText("");
                             password.setText("");
                             //errorMessage.setText("");
                         
-                        } else {
+                        } else if (currUserrole.getUserrole() == 4) {
                             myController.setScreen(Main.studentMainID);
                             username.setText("");
                             password.setText("");

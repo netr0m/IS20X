@@ -52,7 +52,7 @@ public class UserModuleSession implements UsersModelSessionRemote {
         userDataModule.setFirstName(user.getFName());
         userDataModule.setLastName(user.getLName());
         userDataModule.setMail(user.getEmail());
-        userDataModule.setIsTeacher(user.getIsTeacher());
+        userDataModule.setUserrole(user.getUserrole());
         
         return userDataModule; 
     }
