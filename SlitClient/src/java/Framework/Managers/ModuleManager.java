@@ -23,7 +23,7 @@ public class ModuleManager {
     private ModuleSessionBeanRemote lookupModuleSessionBeanRemote() {
         try {
             Context c = new InitialContext();
-           // return (ModuleSessionBeanRemote) c.lookup("java:comp/env/ModuleSessionBean");
+                //return (ModuleSessionBeanRemote) c.lookup("java:comp/env/ModuleSessionBean");
             return (ModuleSessionBeanRemote) c.lookup("java:global/SlitServer-ejb/ModuleSessionBean");
             
         } catch (NamingException ne) {
