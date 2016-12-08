@@ -12,9 +12,11 @@ package slitclient;
 public class UserType {
     
     public static int userrole;
+    public static String username;
     
-    public UserType(int userrole) {
+    public UserType(int userrole, String username) {
         this.userrole = userrole;
+        this.username = username;
     }
     
     public int getUserrole() {
@@ -23,5 +25,13 @@ public class UserType {
     
     public void setUserrole(int role) {
         this.userrole = role;
+    }
+    
+    public String getUsername() {
+        return username;
+    }
+    
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

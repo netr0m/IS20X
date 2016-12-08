@@ -5,8 +5,10 @@ package slitclient;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Data.ModuleDeliveryDataModel;
 import Data.UsersDataModel;
 import Framework.Managers.UserManager;
+import Server.ModuleDelivery;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
@@ -18,6 +20,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import database.Overlook;
+import static database.Overlook_.moduleDelivery;
+import static database.Overlook_.moduleName;
+import static database.Overlook_.uploadDate;
+import static database.Overlook_.username;
+import java.util.List;
+import javax.persistence.EntityManager;
 
 /**
  * FXML Controller class
@@ -30,39 +38,39 @@ public class OverlookController implements Initializable, ControlledScreen {
 
     private Main application;
         @FXML
-    private TableView<Overlook> overLookTable;
+    private TableView<ModuleDelivery> overLookTable;
     @FXML
-    private TableColumn<Overlook, String> columnName;
+    private TableColumn<ModuleDelivery, String> columnName;
     @FXML
-    private TableColumn<Overlook, String> columnMod1;
+    private TableColumn<ModuleDelivery, String> columnMod1;
     @FXML
-    private TableColumn<Overlook, String> columnMod2;
+    private TableColumn<ModuleDelivery, String> columnMod2;
     @FXML
-    private TableColumn<Overlook, String> columnMod3;
+    private TableColumn<ModuleDelivery, String> columnMod3;
     @FXML
-    private TableColumn<Overlook, String> columnMod4;
+    private TableColumn<ModuleDelivery, String> columnMod4;
     @FXML
-    private TableColumn<Overlook, String> columnMod5;
+    private TableColumn<ModuleDelivery, String> columnMod5;
     @FXML
-    private TableColumn<Overlook, String> columnMod6;
+    private TableColumn<ModuleDelivery, String> columnMod6;
     @FXML
-    private TableColumn<Overlook, String> columnMod7;
+    private TableColumn<ModuleDelivery, String> columnMod7;
     @FXML
-    private TableColumn<Overlook, String> columnMod8;
+    private TableColumn<ModuleDelivery, String> columnMod8;
     @FXML
-    private TableColumn<Overlook, String> columnMod9;
+    private TableColumn<ModuleDelivery, String> columnMod9;
     @FXML
-    private TableColumn<Overlook, String> columnMod10;
+    private TableColumn<ModuleDelivery, String> columnMod10;
     @FXML
-    private TableColumn<Overlook, String> columnMod11;
+    private TableColumn<ModuleDelivery, String> columnMod11;
     @FXML
-    private TableColumn<Overlook, String> columnMod12;
+    private TableColumn<ModuleDelivery, String> columnMod12;
     @FXML
-    private TableColumn<Overlook, String> columnMod13;
+    private TableColumn<ModuleDelivery, String> columnMod13;
     @FXML
-    private TableColumn<Overlook, String> columnMod14;
-    
-    private ObservableList<Overlook> data;
+    private TableColumn<ModuleDelivery, String> columnMod14;
+    private EntityManager em;
+    private ObservableList<ModuleDelivery> data;
 
     ScreensController myController;
     /**
@@ -70,17 +78,21 @@ public class OverlookController implements Initializable, ControlledScreen {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        UserManager manager = new UserManager();
         
-        data = FXCollections.observableArrayList();
+        List<ModuleDelivery> moduleDeliveryList =
+            em.createQuery("SELECT o FROM Overlook o").getResultList();
+        
+        data = FXCollections.observableArrayList(moduleDeliveryList);
+        overLookTable.setItems((ObservableList<ModuleDelivery>) moduleDeliveryList);
         
         //ObservableList<String> items = FXCollections.observableArrayList();
         
-        for (UsersDataModel user : manager.getAllUsers()) {
-            items.add(user.getUsername());
+        /*for (ModuleDeliveryDataModel moduleDeliveryz : manager.getAllUsers()) {
+            
+            //data.add(new ModuleDelivery(username, moduleName, uploadDate, moduleDelivery);
         }
         
-        this.MainListView.setItems(items);
+        this.MainListView.setItems(items);*/
     }
     
     public void setScreenParent(ScreensController screenParent){

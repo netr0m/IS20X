@@ -21,7 +21,6 @@ import javafx.scene.paint.Color;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import slitclient.UserType;
 /**
  * FXML Controller class
  *
