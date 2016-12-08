@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.LoginController">
+  <children>
+    <VBox alignment="CENTER" spacing="15.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0">
+      <children>
+        <Label id="Header" alignment="CENTER" maxHeight="27.0" maxWidth="150.0" minHeight="27.0" minWidth="150.0" prefHeight="27.0" prefWidth="150.0" text="UiA SLIT" textAlignment="CENTER">
+          <font>
+            <Font size="23.0" />
+          </font>
+        </Label>
+            <TextField fx:id="userId" alignment="CENTER" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" promptText="Brukernavn">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="15.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="password" alignment="CENTER" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" promptText="Passord">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="15.0" />
+               </font>
+            </PasswordField>
+      
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#goToDashBoard" onKeyPressed="#goToDashBoard" text="Login" />
+               </children>
+            </HBox>
+            <Label fx:id="lblStatus" onKeyPressed="#goToDashBoard" textFill="#29c629" />
+            <Label>
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@standard_uia.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+      </children>
+      <padding>
+        <Insets />
+      </padding>
+    </VBox>
+  </children>
+</AnchorPane>

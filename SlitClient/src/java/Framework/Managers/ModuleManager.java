@@ -5,7 +5,9 @@
  */
 package Framework.Managers;
 
+import DataModule.ModuleDataModule;
 import Server.ModuleSessionBeanRemote;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -32,6 +34,27 @@ public class ModuleManager {
     
     
     public  String getModuleNameFromId(int id){
+        
         return this.lookupModuleSessionBeanRemote().getModuleNameFromId(id);
+    }
+    
+    public ModuleDataModule getModule(int id){
+        
+        return this.lookupModuleSessionBeanRemote().getModule(1);
+    }
+    
+    public List<ModuleDataModule> getModules(){
+        
+        return this.lookupModuleSessionBeanRemote().getAllModules();
+    }
+    
+    public boolean storeModule(ModuleDataModule dataModule){
+        
+        return this.lookupModuleSessionBeanRemote().storeModule(dataModule);
+    }
+    
+    public ModuleDataModule getModuleByName(String moduleName){
+        
+        return this.lookupModuleSessionBeanRemote().findModuleByName(moduleName);
     }
 }
