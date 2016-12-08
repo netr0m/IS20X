@@ -2,7 +2,7 @@
 
 package slitgui;
 
-import fxml.ScreensController;
+import slitgui.ScreensController;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.Group;
@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * Framework for controlling screens
+ * @author Angie
  */
 public class Main extends Application {
     
@@ -23,6 +23,12 @@ public class Main extends Application {
     public static String testID = "test";
     public static String testFile = "test.fxml";
     
+    
+    
+    //
+    //
+    //
+    // sjekk id på 
     
     @Override
     public void start(Stage primaryStage) {

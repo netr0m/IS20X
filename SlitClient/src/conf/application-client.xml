@@ -6,4 +6,9 @@
     <ejb-ref-type>Session</ejb-ref-type>
     <remote>Server.ModuleSessionBeanRemote</remote>
   </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>UsersModuleSession</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <remote>Server.UsersModuleSessionRemote</remote>
+  </ejb-ref>
 </application-client>
