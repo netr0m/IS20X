@@ -15,7 +15,14 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+<<<<<<< HEAD
 
+=======
+/**
+ *
+ * @author Dahl
+ */
+>>>>>>> b92556169427325e731355a4f1315d47d40189ff
 public class UserManager {
 
     private UsersModuleSessionRemote lookupUsersModuleSessionRemote() {
