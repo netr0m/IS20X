@@ -9,7 +9,7 @@ CREATE TABLE Users (
     username VARCHAR(64) NOT NULL,
     password VARCHAR(64) NOT NULL,
     email VARCHAR(64) NOT NULL,
-    userrole INT(1) NOT NULL DEFAULT 4 # 1 = ADMIN, 2 = TEACHER, 3 = ASSISTANT, 4 = STUDENT
+    userrole INT(1) NOT NULL DEFAULT 4
 );
 
 CREATE TABLE Module (
@@ -23,7 +23,7 @@ CREATE TABLE ModuleDelivery (
     userID INT,
     moduleID INT,
     uploadDate TIMESTAMP NOT NULL DEFAULT NOW(),
-    moduleStatus INT(1) NOT NULL DEFAULT 0, #0 = til vurdering, 1 = godkjent, 2 = ikke godkjent
+    moduleStatus INT(1) NOT NULL DEFAULT 0,
     moduleDelivery TEXT NULL,
     moduleVideo BLOB NULL,
     moduleAssesmentComment TEXT NULL,
@@ -32,7 +32,24 @@ CREATE TABLE ModuleDelivery (
         REFERENCES Module (moduleID),
     CONSTRAINT moduleDelivery_user_fk FOREIGN KEY (userID)
         REFERENCES Users (userID)
-); 
+);
+
+CREATE VIEW Overlook AS
+    SELECT 
+        u.username AS Username,
+        m.moduleName AS ModuleName,
+        md.uploadDate AS UploadDate,
+        md.moduleDelivery AS ModuleDelivery,
+        md.moduleFile AS ModuleFile
+    FROM
+        moduleDelivery md
+			INNER JOIN
+        users u ON md.userID = u.userID
+			INNER JOIN
+		module m ON md.moduleID = m.moduleID
+    WHERE
+        md.moduleStatus = '0'
+    ORDER BY md.uploadDate;
 
 INSERT INTO Users VALUES(null, 'Admin', 'UiA', 'admin', 'admin', 'admin@uia.no', '1'); #Admin
 INSERT INTO Users VALUES(null, 'Hallgeir', 'Nilsen', 'hallgeir', 'hallgeir', 'hallgeir@uia.no', '2'); #Teacher

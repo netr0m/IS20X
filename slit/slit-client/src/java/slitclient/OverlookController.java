@@ -15,7 +15,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import database.Overlook;
 
 /**
  * FXML Controller class
@@ -27,10 +29,40 @@ public class OverlookController implements Initializable, ControlledScreen {
     LoginController loginCtrl;
 
     private Main application;
+        @FXML
+    private TableView<Overlook> overLookTable;
     @FXML
-    private ListView<String> MainListView;
+    private TableColumn<Overlook, String> columnName;
     @FXML
-    private TableView<String> tableView;
+    private TableColumn<Overlook, String> columnMod1;
+    @FXML
+    private TableColumn<Overlook, String> columnMod2;
+    @FXML
+    private TableColumn<Overlook, String> columnMod3;
+    @FXML
+    private TableColumn<Overlook, String> columnMod4;
+    @FXML
+    private TableColumn<Overlook, String> columnMod5;
+    @FXML
+    private TableColumn<Overlook, String> columnMod6;
+    @FXML
+    private TableColumn<Overlook, String> columnMod7;
+    @FXML
+    private TableColumn<Overlook, String> columnMod8;
+    @FXML
+    private TableColumn<Overlook, String> columnMod9;
+    @FXML
+    private TableColumn<Overlook, String> columnMod10;
+    @FXML
+    private TableColumn<Overlook, String> columnMod11;
+    @FXML
+    private TableColumn<Overlook, String> columnMod12;
+    @FXML
+    private TableColumn<Overlook, String> columnMod13;
+    @FXML
+    private TableColumn<Overlook, String> columnMod14;
+    
+    private ObservableList<Overlook> data;
 
     ScreensController myController;
     /**
@@ -40,7 +72,9 @@ public class OverlookController implements Initializable, ControlledScreen {
     public void initialize(URL url, ResourceBundle rb) {
         UserManager manager = new UserManager();
         
-        ObservableList<String> items = FXCollections.observableArrayList();
+        data = FXCollections.observableArrayList();
+        
+        //ObservableList<String> items = FXCollections.observableArrayList();
         
         for (UsersDataModel user : manager.getAllUsers()) {
             items.add(user.getUsername());
@@ -55,7 +89,10 @@ public class OverlookController implements Initializable, ControlledScreen {
 
     @FXML
     public void goToMain(ActionEvent event){
-        // FIX ME PLS
-        myController.setScreen(Main.teacherMainID);
+        if (UserType.userrole == 1 | UserType.userrole == 2 | UserType.userrole == 3) {
+            myController.setScreen(Main.teacherMainID);
+        } else if (UserType.userrole == 4) {
+            myController.setScreen(Main.studentMainID);
+        }
     }
 }
