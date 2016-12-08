@@ -20,12 +20,6 @@ public class Main extends Application {
     public static String testID = "test";
     public static String testFile = "test.fxml";
     
-    
-    
-    //
-    //
-    //
-    // sjekk id på 
 
     @Override
     public void start(Stage primaryStage) {
