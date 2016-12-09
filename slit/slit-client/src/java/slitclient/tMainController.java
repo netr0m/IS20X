@@ -68,4 +68,9 @@ public class tMainController implements Initializable, ControlledScreen {
     public void goToApproval(ActionEvent event) {
         myController.setScreen(Main.approvalID);
     }
+    
+    @FXML
+    public void goToCreateModule(ActionEvent event) {
+        myController.setScreen(Main.newmoduleID);
+    }
 }

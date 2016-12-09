@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controllers.NewModuleController">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="1280.0">
+         <items>
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="55.0" minHeight="25.0" minWidth="55.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="25.0" prefWidth="55.0" text="Tilbake" textAlignment="CENTER">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="12.0" />
+               </font>
+            </Button>
+         </items>
+      </ToolBar>
+      <VBox alignment="CENTER" layoutX="325.0" layoutY="54.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="638.0" prefWidth="630.0" spacing="30.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="325.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="54.0">
+         <children>
+            <TextArea fx:id="moduleNameField" layoutX="10.0" layoutY="41.0" prefHeight="35.0" prefWidth="630.0" promptText="Modulnavn" />
+            <TextArea fx:id="moduleSummaryField" prefHeight="147.0" prefWidth="630.0" promptText="Oppsummering av modul.." />
+            <TextArea fx:id="moduleDescField" layoutX="10.0" layoutY="10.0" prefHeight="293.0" prefWidth="630.0" promptText="Beskrivelse av modul.." />
+            <HBox alignment="CENTER" cacheShape="false" centerShape="false" maxHeight="25.0" maxWidth="175.0" minHeight="25.0" minWidth="175.0" prefHeight="720.0" prefWidth="1280.0" scaleShape="false" spacing="30.0">
+               <children>
+                  <Button fx:id="cancel" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToMain" text="Avbryt" textAlignment="CENTER">
+                     <font>
+                        <Font name="Yu Gothic UI Light" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="confirm" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#submitModule" text="Bekreft" textAlignment="CENTER">
+                     <font>
+                        <Font name="Yu Gothic UI Light" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Label id="errorLabel" fx:id="errorLabel" alignment="CENTER" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

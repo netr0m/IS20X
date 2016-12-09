@@ -49,8 +49,8 @@ public class UserModuleSession implements UsersModelSessionRemote {
         userDataModule.setUserID(user.getUserID());
         userDataModule.setUsername(user.getUsername());
         userDataModule.setPassword(user.getPassword());
-        userDataModule.setFirstName(user.getFName());
-        userDataModule.setLastName(user.getLName());
+        userDataModule.setFName(user.getFName());
+        userDataModule.setLName(user.getLName());
         userDataModule.setMail(user.getEmail());
         userDataModule.setUserrole(user.getUserrole());
         
@@ -100,6 +100,35 @@ public class UserModuleSession implements UsersModelSessionRemote {
             e.printStackTrace();
         }
         return retModule; 
+    }
+    
+    private Users convertToUsersEntity(UsersDataModel user)
+    {
+        Users userDataModule = new Users(); 
+        
+        userDataModule.setUserID(user.getUserID());
+        userDataModule.setUsername(user.getUsername());
+        userDataModule.setPassword(user.getPassword());
+        userDataModule.setFName(user.getFName());
+        userDataModule.setLName(user.getLName());
+        userDataModule.setEmail(user.getEmail());
+        userDataModule.setUserrole(user.getUserrole());
+        
+        return userDataModule; 
+    }
+    
+    @Override
+    public boolean storeUser(UsersDataModel user) {
+        Users userEntity = this.convertToUsersEntity(user);
+        
+        try {
+            em.persist(userEntity);
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        
+        return true;
     }
     
     public void persist(Object object) {

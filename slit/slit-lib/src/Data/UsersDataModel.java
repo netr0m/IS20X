@@ -19,20 +19,33 @@ public class UsersDataModel implements Serializable{
     private String password;
     private String email;
     private int userrole;
+    
+    public UsersDataModel(String fName, String lName, String username, String password, String email, int userrole) {
+        this.fName = fName;
+        this.lName = lName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.userrole = userrole;
+    }
+    
+    public UsersDataModel() {
+        
+    }
 
-    public String getFirstName() {
+    public String getFName() {
         return fName;
     }
 
-    public void setFirstName(String fName) {
+    public void setFName(String fName) {
         this.fName = fName;
     }
 
-    public String getLastName() {
+    public String getLName() {
         return lName;
     }
 
-    public void setLastName(String lName) {
+    public void setLName(String lName) {
         this.lName = lName;
     }
     

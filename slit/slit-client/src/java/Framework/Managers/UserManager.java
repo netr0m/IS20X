@@ -42,4 +42,8 @@ public class UserManager {
     public List<UsersDataModel> getAllUsers() {
         return this.lookupUsersModuleSessionRemote().getAllUsers();
     }
+    
+    public boolean storeUser(UsersDataModel userModule) {
+        return this.lookupUsersModuleSessionRemote().storeUser(userModule);
+    }
 }

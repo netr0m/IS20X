@@ -5,7 +5,9 @@ package gui.Controllers;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Data.ModuleDataModel;
 import Data.UsersDataModel;
+import Framework.Managers.ModuleManager;
 import Framework.Managers.UserManager;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,32 +16,27 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import slitclient.ControlledScreen;
 import slitclient.Main;
 import slitclient.ScreensController;
-import slitclient.UserType;
 
 /**
  * FXML Controller class
  *
  * @author Morten
  */
-public class NewUserController implements Initializable, ControlledScreen {
+public class NewModuleController implements Initializable, ControlledScreen {
     
     @FXML
-    TextField fNameField;
+    TextArea moduleNameField;
     @FXML
-    TextField lNameField;
+    TextArea moduleSummaryField;
     @FXML
-    TextField usernameField;
-    @FXML
-    TextField emailField;
-    @FXML
-    ComboBox rolePicker;
+    TextArea moduleDescField;
     @FXML
     Label errorLabel;
-    private int userrole;
 
     private Main application;
 
@@ -62,33 +59,22 @@ public class NewUserController implements Initializable, ControlledScreen {
     }
     
     @FXML
-    public void submitUser(ActionEvent event) {
-        if (rolePicker.getValue().equals("ADMIN")) {
-            userrole = 1;
-        } else if (rolePicker.getValue().equals("TEACHER")) {
-            userrole = 2;
-        } else if (rolePicker.getValue().equals("ASSISTANT")) {
-            userrole = 3;
-        } else if (rolePicker.getValue().equals("STUDENT")) {
-            userrole = 4;
-        }
+    public void submitModule(ActionEvent event) {
         try {
-            UsersDataModel userModel = new UsersDataModel(fNameField.getText(), lNameField.getText(), usernameField.getText(), usernameField.getText(), emailField.getText(), userrole);
+            ModuleDataModel moduleModel = new ModuleDataModel(moduleNameField.getText(), moduleSummaryField.getText(), moduleDescField.getText());
             
-            UserManager userManager = new UserManager();
+            ModuleManager moduleManager = new ModuleManager();
             
-            userManager.storeUser(userModel); 
+            moduleManager.storeModule(moduleModel); 
             
-            errorLabel.setText("Bruker " + usernameField.getText() + " opprettet");
+            errorLabel.setText("Ny " + moduleNameField.getText() + " opprettet");
         } catch (Exception e) {
             System.out.println(e);
         }
         myController.setScreen(Main.teacherMainID);
-        fNameField.setText("");
-        lNameField.setText("");
-        usernameField.setText("");
-        emailField.setText("");
-        rolePicker.setValue("");
+        moduleNameField.setText("");
+        moduleSummaryField.setText("");
+        moduleDescField.setText("");
         errorLabel.setText("");
     }
 }
