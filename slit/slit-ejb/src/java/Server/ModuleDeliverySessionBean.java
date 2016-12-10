@@ -6,6 +6,7 @@
 package Server;
 
 import Data.ModuleDeliveryDataModel;
+import database.Moduledelivery;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -67,18 +68,22 @@ public class ModuleDeliverySessionBean implements ModuleDeliverySessionBeanRemot
     }
 
     private ModuleDelivery convertToModuleDeliveryEntity(ModuleDeliveryDataModel moduleDelivery) {
-        ModuleDelivery moduleDelivertyEntity = new ModuleDelivery();
+        ModuleDelivery moduleDeliveryDataModel = new ModuleDelivery();
         
-        moduleDelivertyEntity.setUserID(moduleDelivery.getUserID());
-        moduleDelivertyEntity.setModuleDelivery(moduleDelivery.getModuleDelivery());
-        moduleDelivertyEntity.setModuleFile(moduleDelivery.getModuleFile());
+        moduleDeliveryDataModel.setUserID(moduleDelivery.getUserID());
+        moduleDeliveryDataModel.setUserID(moduleDelivery.getUserID());
+        moduleDeliveryDataModel.setModuleID(moduleDelivery.getModuleID());
+        moduleDeliveryDataModel.setModuleDelivery(moduleDelivery.getModuleDelivery());
+        moduleDeliveryDataModel.setModuleFile(moduleDelivery.getModuleFile());
         
-        return moduleDelivertyEntity;
+        return moduleDeliveryDataModel;
     }
     
     @Override
-    public boolean storeModuleDelivery(ModuleDeliveryDataModel dataDeliveryModule) {
-        ModuleDelivery moduleDeliveryEntity = this.convertToModuleDeliveryEntity(dataDeliveryModule);
+    public boolean storeModuleDelivery(ModuleDeliveryDataModel moduleDelivery) {
+        // java.lang.IllegalArgumentException: Object: Server.ModuleDelivery@4400069b is not a known Entity type.
+        // Feil objekttype
+        ModuleDelivery moduleDeliveryEntity = this.convertToModuleDeliveryEntity(moduleDelivery);
         
         try {
             em.persist(moduleDeliveryEntity);

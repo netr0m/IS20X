@@ -12,34 +12,24 @@ import java.io.Serializable;
  * @author Morten
  */
 public class ModuleDeliveryDataModel implements Serializable {
-    
     private int userID; 
-    
-    private String modulename; 
-    
-    private String uploadDate;  
-    
+    private int moduleID; 
+    private String uploadDate; 
     private boolean moduleStatus; 
-    
     private String moduleDelivery; 
-    
-    private String moduleFile;
-    
+    private String moduleFile; 
     private String moduleAssesmentComment; 
     
-    public ModuleDeliveryDataModel(int userID, String modulename, String moduleDelivery, String moduleFile) {
-        this.userID = userID;
-        
-        this.modulename = modulename;
-        
-        this.moduleDelivery = moduleDelivery;
-        
+    public ModuleDeliveryDataModel(int userID, int moduleID, String moduleDelivery, String moduleFile) {
+        this.userID = userID;     
+        this.moduleID = moduleID;
+        this.moduleDelivery = moduleDelivery;     
         this.moduleFile = moduleFile;
     }
     
-    public ModuleDeliveryDataModel(int userID, String modulename, String moduleDelivery) {
+    public ModuleDeliveryDataModel(int userID, int moduleID, String moduleDelivery) {
         this.userID = userID;
-        this.modulename = modulename;
+        this.moduleID = moduleID;
         this.moduleDelivery = moduleDelivery;
     }
     
@@ -55,12 +45,12 @@ public class ModuleDeliveryDataModel implements Serializable {
         this.userID = userID;
     }
 
-    public String getModulename() {
-        return modulename;
+    public int getModuleID() {
+        return moduleID;
     }
 
-    public void setModulename(String modulename) {
-        this.modulename = modulename;
+    public void setModuleID(int moduleID) {
+        this.moduleID = moduleID;
     }
 
     public String getUploadDate() {
@@ -91,7 +81,7 @@ public class ModuleDeliveryDataModel implements Serializable {
         return moduleFile;
     }
     
-    public void setModuleFile(String file) {
+    public void setModuleFile(String moduleFile) {
         this.moduleFile = moduleFile;
     }
 

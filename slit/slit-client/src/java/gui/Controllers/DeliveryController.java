@@ -5,10 +5,8 @@ package gui.Controllers;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import Data.ModuleDataModel;
 import Data.ModuleDeliveryDataModel;
 import Framework.Managers.ModuleDeliveryManager;
-import Framework.Managers.ModuleManager;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -49,6 +47,8 @@ public class DeliveryController implements Initializable, ControlledScreen {
     @FXML
     Label errorLabel;
     private Desktop desktop = Desktop.getDesktop();
+    private int moduleID;
+
 
     private Main application;
 
@@ -76,11 +76,17 @@ public class DeliveryController implements Initializable, ControlledScreen {
     @FXML
     public void deliverModule(ActionEvent event) {   
         System.out.println(modulePicker.getValue() + " " + commentField.getText() + " " + fileName.getText() + " av " + UserType.username + " AKA UserID " + UserType.userID);
-        
         try {
             String module = (String) modulePicker.getValue();
-            ModuleDeliveryDataModel moduleDeliveryModel = new ModuleDeliveryDataModel(UserType.userID, module, commentField.getText(), fileName.getText());
+            /*if (modulePicker.getValue().equals("Modul 1")) {
+                
+            }*/
+            String intString = module.replaceAll("[^0-9]", ""); // returns 123
+            int moduleID = Integer.parseInt(String.valueOf(intString));
+            System.out.println(moduleID);
             
+            //ModuleDeliveryDataModel moduleDeliveryModel = new ModuleDeliveryDataModel(UserType.userID, moduleID, commentField.getText(), fileName.getText());
+            ModuleDeliveryDataModel moduleDeliveryModel = new ModuleDeliveryDataModel(3, 3, "Hestkuk å sånn sit", "bitchassnigger.mp4");
             ModuleDeliveryManager moduleDeliveryManager = new ModuleDeliveryManager();
             
             moduleDeliveryManager.storeModuleDelivery(moduleDeliveryModel); 

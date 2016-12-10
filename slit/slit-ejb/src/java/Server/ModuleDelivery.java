@@ -11,22 +11,22 @@ package Server;
  */
 public class ModuleDelivery {
     private int userID;
-    private String moduleName;
+    private int moduleID;
     private String uploadDate;
     private String moduleDelivery;
     private String moduleFile;
     
-    public ModuleDelivery(int userID, String moduleName, String uploadDate, String moduleDelivery, String moduleFile) {
+    public ModuleDelivery(int userID, int moduleID, String uploadDate, String moduleDelivery, String moduleFile) {
         this.userID = userID;
-        this.moduleName = moduleName;
+        this.moduleID = moduleID;
         this.uploadDate = uploadDate;
         this.moduleDelivery = moduleDelivery;
         this.moduleFile = moduleFile;
     }
     
-    public ModuleDelivery(int userID, String moduleName, String uploadDate, String moduleDelivery) {
+    public ModuleDelivery(int userID, int moduleID, String uploadDate, String moduleDelivery) {
         this.userID = userID;
-        this.moduleName = moduleName;
+        this.moduleID = moduleID;
         this.uploadDate = uploadDate;
         this.moduleDelivery = moduleDelivery;
     }
@@ -43,12 +43,12 @@ public class ModuleDelivery {
         this.userID = userID;
     }
     
-    public String getModuleName() {
-        return moduleName;
+    public int getModuleID() {
+        return moduleID;
     }
     
-    public void setModuleName(String moduleName) {
-        this.moduleName = moduleName;
+    public void setModuleID(int moduleID) {
+        this.moduleID = moduleID;
     }
     
     public String getUploadDate() {

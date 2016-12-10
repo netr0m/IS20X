@@ -25,6 +25,7 @@ public class ModuleDeliveryManager {
             Context c = new InitialContext();
             //return (ModuleSessionBeanRemote) c.lookup("java:comp/env/ModuleSessionBean");
             //return (ModuleDeliverySessionBeanRemote) c.lookup("java:global/slit-ejb/ModuleDeliverySessionBean");
+            //return (ModuleDeliverySessionBeanRemote) c.lookup("java:global/slit-ejb/ModuleDeliverySessionBean");
             return (ModuleDeliverySessionBeanRemote) c.lookup("java:global/slit-ejb/ModuleDeliverySessionBean");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
@@ -37,9 +38,8 @@ public class ModuleDeliveryManager {
         return this.lookupModuleDeliverySessionBeanRemote().getModuleDeliveries(); 
     }
     
-    public boolean storeModuleDelivery(ModuleDeliveryDataModel dataDeliveryModule) 
-    {
-        return this.lookupModuleDeliverySessionBeanRemote().storeModuleDelivery(dataDeliveryModule); 
+    public boolean storeModuleDelivery(ModuleDeliveryDataModel dataModuleDelivery) {
+        return this.lookupModuleDeliverySessionBeanRemote().storeModuleDelivery(dataModuleDelivery);
     }
     
 }

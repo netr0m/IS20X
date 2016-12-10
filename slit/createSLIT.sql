@@ -25,7 +25,7 @@ CREATE TABLE ModuleDelivery (
     uploadDate TIMESTAMP NOT NULL DEFAULT NOW(),
     moduleStatus INT(1) NOT NULL DEFAULT 0,
     moduleDelivery TEXT NULL,
-    moduleVideo BLOB NULL,
+    moduleFile BLOB NULL,
     moduleAssesmentComment TEXT NULL,
     CONSTRAINT moduleDelivery_pk PRIMARY KEY (userID , moduleID),
     CONSTRAINT moduleDelivery_module_fk FOREIGN KEY (moduleID)
@@ -59,4 +59,4 @@ INSERT INTO Users VALUES(null, 'Svenn-Roger', 'Sørensen', 'srsore15', 'srsore15
 INSERT INTO Module(moduleName, moduleSummary, moduleDescription) VALUES ('Module 1', 'Module 1 - Basic Introduction', 'Open up a laptop. If its a Lenovo, give it to your grandfather.'); 
 INSERT INTO Module(moduleName, moduleSummary, moduleDescription) VALUES ('Module 2', 'Module 2 - Get a new PC', 'Buy a new computer if you had a Lenovo. Trust me');
 
-INSERT INTO ModuleDelivery (userID, moduleID, moduleDelivery, moduleVideo) VALUES (3, 1, 'Test delivery. Have a gr8 l8 n8 m8 :)', 'modulvideo1.mp4');
+INSERT INTO ModuleDelivery (userID, moduleID, moduleDelivery, moduleFile) VALUES (3, 1, 'Test delivery. Have a gr8 l8 n8 m8 :)', 'modulvideo1.mp4');

@@ -30,7 +30,6 @@ public class UsersDataModel implements Serializable{
     }
     
     public UsersDataModel() {
-        
     }
 
     public String getFName() {

@@ -18,7 +18,6 @@ import javafx.scene.control.TextField;
 import slitclient.ControlledScreen;
 import slitclient.Main;
 import slitclient.ScreensController;
-import slitclient.UserType;
 
 /**
  * FXML Controller class
@@ -58,6 +57,11 @@ public class NewUserController implements Initializable, ControlledScreen {
 
     @FXML
     public void goToMain(ActionEvent event){
+        fNameField.setText("");
+        lNameField.setText("");
+        usernameField.setText("");
+        emailField.setText("");
+        rolePicker.setValue("");
         myController.setScreen(Main.teacherMainID);
     }
     

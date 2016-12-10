@@ -20,5 +20,5 @@ public interface ModuleDeliverySessionBeanRemote {
     
     List<ModuleDeliveryDataModel> getAllModuleDeliveries();
     
-    boolean storeModuleDelivery(ModuleDeliveryDataModel dataDeliveryModule);
+    boolean storeModuleDelivery(ModuleDeliveryDataModel moduleDelivery); 
 }
