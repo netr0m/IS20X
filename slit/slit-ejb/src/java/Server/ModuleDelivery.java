@@ -10,33 +10,37 @@ package Server;
  * @author mortea15
  */
 public class ModuleDelivery {
-    private String username;
+    private int userID;
     private String moduleName;
     private String uploadDate;
     private String moduleDelivery;
     private String moduleFile;
     
-    public ModuleDelivery(String username, String moduleName, String uploadDate, String moduleDelivery, String moduleFile) {
-        this.username = username;
+    public ModuleDelivery(int userID, String moduleName, String uploadDate, String moduleDelivery, String moduleFile) {
+        this.userID = userID;
         this.moduleName = moduleName;
         this.uploadDate = uploadDate;
         this.moduleDelivery = moduleDelivery;
         this.moduleFile = moduleFile;
     }
     
-    public ModuleDelivery(String username, String moduleName, String uploadDate, String moduleDelivery) {
-        this.username = username;
+    public ModuleDelivery(int userID, String moduleName, String uploadDate, String moduleDelivery) {
+        this.userID = userID;
         this.moduleName = moduleName;
         this.uploadDate = uploadDate;
         this.moduleDelivery = moduleDelivery;
     }
     
-    public String getUsername() {
-        return username;
+    public ModuleDelivery() {
+        
     }
     
-    public void setUsername(String username) {
-        this.username = username;
+    public int getUserID() {
+        return userID;
+    }
+    
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
     
     public String getModuleName() {

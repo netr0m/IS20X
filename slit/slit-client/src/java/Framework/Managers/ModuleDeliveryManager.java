@@ -5,8 +5,8 @@
  */
 package Framework.Managers;
 
-import Data.ModuleDataModel;
-import Server.ModuleSessionBeanRemote;
+import Data.ModuleDeliveryDataModel;
+import Server.ModuleDeliverySessionBeanRemote;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,50 +20,26 @@ import javax.naming.NamingException;
  */
 public class ModuleDeliveryManager {
 
-    private ModuleSessionBeanRemote lookupModuleSessionBeanRemote() {
+    private ModuleDeliverySessionBeanRemote lookupModuleDeliverySessionBeanRemote() {
         try {
             Context c = new InitialContext();
             //return (ModuleSessionBeanRemote) c.lookup("java:comp/env/ModuleSessionBean");
-            return (ModuleSessionBeanRemote) c.lookup("java:global/slit-ejb/ModuleDeliverySessionBean");
+            //return (ModuleDeliverySessionBeanRemote) c.lookup("java:global/slit-ejb/ModuleDeliverySessionBean");
+            return (ModuleDeliverySessionBeanRemote) c.lookup("java:global/slit-ejb/ModuleDeliverySessionBean");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
         }
     }
     
-    public String getModuleById(int id) 
+    public List<ModuleDeliveryDataModel> getModuleDeliveries()
     {
-        return this.lookupModuleSessionBeanRemote().getModuleByID(id);
+        return this.lookupModuleDeliverySessionBeanRemote().getModuleDeliveries(); 
     }
     
-    public List<ModuleDataModel> getModules()
+    public boolean storeModuleDelivery(ModuleDeliveryDataModel dataDeliveryModule) 
     {
-        return this.lookupModuleSessionBeanRemote().getModules(); 
-    }
-    
-    public List<String> getModulesNames() 
-    {
-        return this.lookupModuleSessionBeanRemote().getModuleNames();
-    }
-    
-    public String getModuleNameFromID(int ID) 
-    {
-        return this.lookupModuleSessionBeanRemote().getModuleNameFromID(ID);
-    }
-    
-    public ModuleDataModel getModule(int ID) 
-    {
-        return this.lookupModuleSessionBeanRemote().getModule(ID);
-    }
-    
-    public ModuleDataModel getModuleByName(String moduleName)
-    {
-        return this.lookupModuleSessionBeanRemote().findModuleByName(moduleName); 
-    }
-    
-    public boolean storeModule(ModuleDataModel dataModule) 
-    {
-        return this.lookupModuleSessionBeanRemote().storeModule(dataModule); 
+        return this.lookupModuleDeliverySessionBeanRemote().storeModuleDelivery(dataDeliveryModule); 
     }
     
 }

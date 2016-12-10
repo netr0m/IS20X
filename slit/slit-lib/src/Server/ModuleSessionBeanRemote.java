@@ -30,5 +30,5 @@ public interface ModuleSessionBeanRemote {
     
     boolean storeModule(ModuleDataModel module); 
     
-     ModuleDataModel findModuleByName(String moduleName);
+    ModuleDataModel findModuleByName(String moduleName);
 }

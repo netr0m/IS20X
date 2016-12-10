@@ -13,9 +13,9 @@ import java.io.Serializable;
  */
 public class ModuleDeliveryDataModel implements Serializable {
     
-    private String userID; 
+    private int userID; 
     
-    private String moduleID; 
+    private String modulename; 
     
     private String uploadDate;  
     
@@ -23,22 +23,44 @@ public class ModuleDeliveryDataModel implements Serializable {
     
     private String moduleDelivery; 
     
+    private String moduleFile;
+    
     private String moduleAssesmentComment; 
+    
+    public ModuleDeliveryDataModel(int userID, String modulename, String moduleDelivery, String moduleFile) {
+        this.userID = userID;
+        
+        this.modulename = modulename;
+        
+        this.moduleDelivery = moduleDelivery;
+        
+        this.moduleFile = moduleFile;
+    }
+    
+    public ModuleDeliveryDataModel(int userID, String modulename, String moduleDelivery) {
+        this.userID = userID;
+        this.modulename = modulename;
+        this.moduleDelivery = moduleDelivery;
+    }
+    
+    public ModuleDeliveryDataModel() {
+        
+    }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserId(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 
-    public String getModuleID() {
-        return moduleID;
+    public String getModulename() {
+        return modulename;
     }
 
-    public void setModuleId(String moduleID) {
-        this.moduleID = moduleID;
+    public void setModulename(String modulename) {
+        this.modulename = modulename;
     }
 
     public String getUploadDate() {
@@ -63,6 +85,14 @@ public class ModuleDeliveryDataModel implements Serializable {
 
     public void setModuleDelivery(String moduleDelivery) {
         this.moduleDelivery = moduleDelivery;
+    }
+    
+    public String getModuleFile() {
+        return moduleFile;
+    }
+    
+    public void setModuleFile(String file) {
+        this.moduleFile = moduleFile;
     }
 
     public String getModuleAssesmentComment() {

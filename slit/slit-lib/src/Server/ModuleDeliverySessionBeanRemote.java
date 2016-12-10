@@ -5,6 +5,8 @@
  */
 package Server;
 
+import Data.ModuleDeliveryDataModel;
+import java.util.List;
 import javax.ejb.Remote;
 
 /**
@@ -14,4 +16,9 @@ import javax.ejb.Remote;
 @Remote
 public interface ModuleDeliverySessionBeanRemote {
     
+    List<ModuleDeliveryDataModel> getModuleDeliveries();
+    
+    List<ModuleDeliveryDataModel> getAllModuleDeliveries();
+    
+    boolean storeModuleDelivery(ModuleDeliveryDataModel dataDeliveryModule);
 }

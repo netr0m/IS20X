@@ -5,6 +5,10 @@ package gui.Controllers;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Data.ModuleDataModel;
+import Data.ModuleDeliveryDataModel;
+import Framework.Managers.ModuleDeliveryManager;
+import Framework.Managers.ModuleManager;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -71,8 +75,26 @@ public class DeliveryController implements Initializable, ControlledScreen {
     
     @FXML
     public void deliverModule(ActionEvent event) {   
-        System.out.println(modulePicker.getValue() + " " + commentField.getText() + " " + fileName.getText() + " av " + UserType.username);
-        myController.setScreen(Main.overlookID);
+        System.out.println(modulePicker.getValue() + " " + commentField.getText() + " " + fileName.getText() + " av " + UserType.username + " AKA UserID " + UserType.userID);
+        
+        try {
+            String module = (String) modulePicker.getValue();
+            ModuleDeliveryDataModel moduleDeliveryModel = new ModuleDeliveryDataModel(UserType.userID, module, commentField.getText(), fileName.getText());
+            
+            ModuleDeliveryManager moduleDeliveryManager = new ModuleDeliveryManager();
+            
+            moduleDeliveryManager.storeModuleDelivery(moduleDeliveryModel); 
+            
+            errorLabel.setText(modulePicker.getValue() + " opprettet");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        modulePicker.setValue("");
+        commentField.setText("");
+        fileName.setText("");
+        
+        myController.setScreen(Main.studentMainID);
+        //myController.setScreen(Main.overlookID);
     }
     
     public void getPickerData() {
@@ -80,7 +102,6 @@ public class DeliveryController implements Initializable, ControlledScreen {
     }
     
     public void chooseFile() throws IOException {
-        //Runtime.getRuntime().exec("explorer.exe /select, path");
         Stage stage = new Stage();
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg en modulvideo (zippet)");

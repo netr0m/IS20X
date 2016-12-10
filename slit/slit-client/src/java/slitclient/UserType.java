@@ -13,10 +13,12 @@ public class UserType {
     
     public static int userrole;
     public static String username;
+    public static int userID;
     
-    public UserType(int userrole, String username) {
+    public UserType(int userrole, String username, int userID) {
         this.userrole = userrole;
         this.username = username;
+        this.userID = userID;
     }
     
     public int getUserrole() {
@@ -33,5 +35,13 @@ public class UserType {
     
     public void setUsername(String username) {
         this.username = username;
+    }
+    
+    public int getUserID() {
+        return userID;
+    }
+    
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }
