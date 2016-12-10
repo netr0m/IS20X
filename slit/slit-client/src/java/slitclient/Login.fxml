@@ -42,7 +42,7 @@
                               <Font name="Yu Gothic Regular" size="14.0" />
                            </font>
                         </Label>
-                        <Label id="label2" fx:id="forgottenPassword" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="133.0" text="Glemt passord?" textFill="#8d8d8d">
+                        <Label id="label2" fx:id="forgottenPassword" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#openResetPasswordDialog" prefHeight="16.0" prefWidth="133.0" text="Glemt passord?" textFill="#8d8d8d">
                            <font>
                               <Font name="Yu Gothic Regular" size="14.0" />
                            </font>

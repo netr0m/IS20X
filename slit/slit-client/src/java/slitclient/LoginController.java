@@ -9,12 +9,15 @@ import Data.UsersDataModel;
 import Framework.Managers.UserManager;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.paint.Color;
 /**
  * FXML Controller class
@@ -103,5 +106,28 @@ public class LoginController implements Initializable, ControlledScreen {
             this.errorMessage.setTextFill(Color.web("#da0d0d"));
             this.errorMessage.setText("Begge feltene må fylles ut.");
         }
+    }
+    
+    public void openResetPasswordDialog() {
+        resetPasswordDialog();
+    }
+    
+    protected Dialog resetPasswordDialog() {
+        TextInputDialog emailDialog = new TextInputDialog("");
+        emailDialog.setTitle("Tilbakestill passord");
+        emailDialog.getDialogPane().setContentText("Epost:");
+        emailDialog.setHeaderText("Vennligst fyll inn din epost (@student.uia.no)");
+        emailDialog.showAndWait()
+                .ifPresent(new Consumer<String>() {
+            @Override
+            public void accept(String response) {
+                if (response.isEmpty()) {
+                    System.out.println("Link ble ikke sendt");
+                } else {
+                    System.out.println("Epost med nytt passord sendt til " + response);
+                }
+            }
+        });
+        return emailDialog;
     }
 }
