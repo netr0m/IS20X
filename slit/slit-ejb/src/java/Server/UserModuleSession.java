@@ -5,6 +5,7 @@
  */
 package Server;
 
+import Common.DataModelConverters;
 import Data.UsersDataModel;
 import database.Users;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class UserModuleSession implements UsersModelSessionRemote {
     public UsersDataModel getUserFromID(int id) {
         Users user = em.find(Users.class, id);
         
-        return convertUser(user); 
+        return DataModelConverters.convertUserEntityToDataModel(user);
     }
     
     public Users getUserEntityFromId(int id) throws Exception 

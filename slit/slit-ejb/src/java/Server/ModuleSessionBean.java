@@ -5,6 +5,7 @@
  */
 package Server;
 
+import Common.DataModelConverters;
 import Data.ModuleDataModel;
 import database.Module;
 import java.util.ArrayList;
@@ -35,8 +36,14 @@ public class ModuleSessionBean implements ModuleSessionBeanRemote {
      * @return 
      */
     @Override
-    public String getModuleByID(int id) {
-        return "test"; 
+    public ModuleDataModel getModuleByID(int id) {
+        try {
+            Module module = em.find(Module.class, id);
+            return DataModelConverters.convertModuleEntityToDataModel(module);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
@@ -57,7 +64,7 @@ public class ModuleSessionBean implements ModuleSessionBeanRemote {
             
             for(Module module : modules) 
             {
-                dataModules.add(this.convertModule(module)); 
+                dataModules.add(DataModelConverters.convertModuleEntityToDataModel(module)); 
             }
         }
         catch(Exception e) 
@@ -95,23 +102,6 @@ public class ModuleSessionBean implements ModuleSessionBeanRemote {
         }
         
         return dataModules; 
-    }
-    
-    /**
-     * Convert Entity module to a ModuleDataModel 
-     * @param module
-     * @return ModuleDataModel 
-     */
-    public ModuleDataModel convertModule(Module module) 
-    {
-        ModuleDataModel ModuleDataModel = new ModuleDataModel(); 
-        
-        ModuleDataModel.setID(module.getModuleID());
-        ModuleDataModel.setModuleDescription(module.getModuleDescription());
-        ModuleDataModel.setModuleName(module.getModuleName());
-        ModuleDataModel.setModuleSummary(module.getModuleSummary());
-        
-        return ModuleDataModel; 
     }
    
     /**
@@ -154,7 +144,7 @@ public class ModuleSessionBean implements ModuleSessionBeanRemote {
     {
         Module module = em.find(Module.class, ID);
         
-        return this.convertModule(module); 
+        return DataModelConverters.convertModuleEntityToDataModel(module); 
     }
     
     /**
@@ -175,7 +165,7 @@ public class ModuleSessionBean implements ModuleSessionBeanRemote {
             
             for(Module module : modules) 
             {
-                moduleList.add(this.convertModule(module)); 
+                moduleList.add(DataModelConverters.convertModuleEntityToDataModel(module));
             }
         }
         catch(Exception e) 
@@ -204,7 +194,7 @@ public class ModuleSessionBean implements ModuleSessionBeanRemote {
             
             Module module = (Module)query.getSingleResult();
             
-            retModule = this.convertModule(module);
+            retModule = DataModelConverters.convertModuleEntityToDataModel(module);
         }
         catch(Exception e) 
         {

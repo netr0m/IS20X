@@ -7,6 +7,8 @@ package gui.Controllers;
  */
 import Data.ModuleDeliveryDataModel;
 import Framework.Managers.ModuleDeliveryManager;
+import Framework.Managers.ModuleManager;
+import Framework.Managers.UserManager;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -52,7 +54,8 @@ public class DeliveryController implements Initializable, ControlledScreen {
     private int moduleID;
 
     private ModuleDeliveryManager moduleDeliveryManager = new ModuleDeliveryManager(); 
-    
+    private UserManager userManager = new UserManager();
+    private ModuleManager moduleManager = new ModuleManager();
 
     private Main application;
 
@@ -93,13 +96,13 @@ public class DeliveryController implements Initializable, ControlledScreen {
             int moduleID = Integer.parseInt(String.valueOf(intString));
             System.out.println(moduleID);
             
-            ModuleDeliveryDataModel moduleDeliveryModel = new ModuleDeliveryDataModel(UserType.userID, moduleID, commentField.getText(), fileName.getText());
+            ModuleDeliveryDataModel moduleDeliveryModel = new ModuleDeliveryDataModel(this.userManager.getUserFromID(UserType.userID), this.moduleManager.getModule(moduleID), commentField.getText(), fileName.getText());
 
             this.moduleDeliveryManager.storeModuleDelivery(moduleDeliveryModel);
             this.errorLabel.setTextFill(Color.web("#13c113"));
             errorLabel.setText("Oppgavebesvarelse for " + modulePicker.getValue() + " levert");
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         modulePicker.setValue("");
         commentField.setText("");

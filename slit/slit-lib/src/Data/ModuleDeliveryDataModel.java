@@ -22,16 +22,16 @@ public class ModuleDeliveryDataModel implements Serializable {
     private String moduleFile; 
     private String moduleAssesmentComment; 
     
-    public ModuleDeliveryDataModel(int userID, int moduleID, String moduleDelivery, String moduleFile) {
-        //this.user = user;  
-        //this.module = module;
+    public ModuleDeliveryDataModel(UsersDataModel user, ModuleDataModel module, String moduleDelivery, String moduleFile) {
+        this.user = user;  
+        this.module = module;
         this.moduleDelivery = moduleDelivery;     
         this.moduleFile = moduleFile;
     }
     
-    public ModuleDeliveryDataModel(int userID, int moduleID, String moduleDelivery) {
-        //this.userID = userID;  
-        //this.moduleID = moduleID;
+    public ModuleDeliveryDataModel(UsersDataModel user, ModuleDataModel module, String moduleDelivery) {
+        this.user = user;  
+        this.module = module;
         this.moduleDelivery = moduleDelivery;
     }
     

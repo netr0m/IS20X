@@ -16,7 +16,7 @@ import javax.ejb.Remote;
 @Remote
 public interface ModuleSessionBeanRemote {
     
-    String getModuleByID(int ID);
+    ModuleDataModel getModuleByID(int ID);
     
     List<ModuleDataModel> getModules();
     

@@ -38,6 +38,7 @@ public class DataModelConverters {
     {
         Users userEntity = new Users(); 
         
+        userEntity.setUserID(usersDataModel.getUserID());
         userEntity.setFName(usersDataModel.getFName());
         userEntity.setLName(usersDataModel.getLName());
         userEntity.setEmail(usersDataModel.getEmail());
@@ -50,11 +51,16 @@ public class DataModelConverters {
     
     public static Module convertModuleDataModelToEntity(ModuleDataModel moduleDataModel)
     {
-        Module entityModule = new Module(); 
+        Module entityModule = new Module();
         
-        entityModule.setModuleDescription(moduleDataModel.getModuleDescription());
+        entityModule.setModuleID(moduleDataModel.getID());
         entityModule.setModuleName(moduleDataModel.getModuleName());
-        entityModule.setModuleSummary(moduleDataModel.getModuleSummary());
+        if (moduleDataModel.getModuleDescription() != null) {
+                entityModule.setModuleDescription(moduleDataModel.getModuleDescription());
+        }
+        if (moduleDataModel.getModuleSummary() != null) {
+                entityModule.setModuleSummary(moduleDataModel.getModuleSummary());
+        }
         
         return entityModule; 
     }
@@ -91,9 +97,13 @@ public class DataModelConverters {
         ModuleDataModel moduleDataModel = new ModuleDataModel();
         
         moduleDataModel.setID(module.getModuleID());
-        moduleDataModel.setModuleDescription(module.getModuleDescription());
         moduleDataModel.setModuleName(module.getModuleName());
-        moduleDataModel.setModuleSummary(module.getModuleSummary());
+        if (module.getModuleDescription() != null) {
+            moduleDataModel.setModuleDescription(module.getModuleDescription());
+        }
+        if (module.getModuleSummary() != null) {
+            moduleDataModel.setModuleSummary(module.getModuleSummary());
+        }
 
         return moduleDataModel; 
     }
@@ -103,12 +113,18 @@ public class DataModelConverters {
         ModuleDeliveryDataModel moduleDeliveryDataModel = new ModuleDeliveryDataModel(); 
         
         moduleDeliveryDataModel.setModule(DataModelConverters.convertModuleEntityToDataModel(delivery.getModuleID()));
-        moduleDeliveryDataModel.setModuleAssesmentComment(delivery.getModuleAssesmentComment());
-        moduleDeliveryDataModel.setModuleDelivery(delivery.getModuleDelivery());
-        moduleDeliveryDataModel.setModuleFile(delivery.getModuleFile());
         moduleDeliveryDataModel.setModuleStatus(delivery.getModuleStatus());
         moduleDeliveryDataModel.setUploadDate(delivery.getUploadDate());
         moduleDeliveryDataModel.setUser(DataModelConverters.convertUserEntityToDataModel(delivery.getUserID()));
+        if (delivery.getModuleAssesmentComment() != null) {
+            moduleDeliveryDataModel.setModuleAssesmentComment(delivery.getModuleAssesmentComment());
+        }
+        if (delivery.getModuleDelivery() != null) {
+            moduleDeliveryDataModel.setModuleDelivery(delivery.getModuleDelivery());
+        }
+        if (delivery.getModuleFile() != null) {
+            moduleDeliveryDataModel.setModuleFile(delivery.getModuleFile());
+        }
         
         return moduleDeliveryDataModel; 
     }
