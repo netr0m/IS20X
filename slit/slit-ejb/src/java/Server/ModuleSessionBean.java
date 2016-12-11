@@ -16,10 +16,10 @@ import javax.persistence.Query;
 
 /**
  *
- * @author Morten
+ * @author InWhi
  */
 @Stateless
-public class ModuleSessionBean implements ModuleSessionBeanRemote{
+public class ModuleSessionBean implements ModuleSessionBeanRemote {
 
     @PersistenceContext(unitName = "slit-ejbPU")
     private EntityManager em;

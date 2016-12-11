@@ -36,6 +36,11 @@ public class UserModuleSession implements UsersModelSessionRemote {
         return convertUser(user); 
     }
     
+    public Users getUserEntityFromId(int id) throws Exception 
+    {
+        return em.find(Users.class, id);
+    }
+    
     /**
      * Convert a users entity to a UsersDataModule  
      * @param user
@@ -62,7 +67,10 @@ public class UserModuleSession implements UsersModelSessionRemote {
         
         try 
         { 
-            Query query = em.createNamedQuery("Users.login", Users.class);
+            
+            Query query = em.createQuery("SELECT u FROM Users u WHERE u.username = :username AND u.password = :password");
+            
+            //Query query = em.createNamedQuery("Users.login", Users.class);
             
             query.setParameter("username", username);
             query.setParameter("password", password); 

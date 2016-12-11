@@ -15,7 +15,7 @@ public class ModuleDataModel implements Serializable{
     
     private int moduleID;
     
-    private String moduleName; 
+    private String moduleName;
     
     private String moduleSummary;
     

@@ -8,7 +8,6 @@ package database;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,10 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username"),
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
     @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email"),
-    @NamedQuery(name = "Users.findByUserrole", query = "SELECT u FROM Users u WHERE u.userrole = :userrole"),
-    @NamedQuery(name = "Users.login", query = "SELECT u FROM Users u WHERE u.username = :username AND u.password = :password"),
-    @NamedQuery(name = "Users.findByIsTeacher", query = "SELECT u FROM Users u WHERE u.userrole = 2 OR u.userrole = 3"),
-    @NamedQuery(name = "Users.findByIsStudent", query = "SELECT u FROM Users u WHERE u.userrole = 4"),})
+    @NamedQuery(name = "Users.findByUserrole", query = "SELECT u FROM Users u WHERE u.userrole = :userrole")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -80,7 +76,7 @@ public class Users implements Serializable {
     @NotNull
     @Column(name = "userrole")
     private int userrole;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @OneToMany(mappedBy = "userID")
     private List<Moduledelivery> moduledeliveryList;
 
     public Users() {

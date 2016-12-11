@@ -65,6 +65,8 @@ public class FirstLoginController implements Initializable, ControlledScreen {
                 password1.setText("");
                 password2.setText("");
             } else if (UserType.userrole == 4) {
+                password1.setText("");
+                password2.setText("");
                 myController.setScreen(Main.studentMainID);
             }
         } else {

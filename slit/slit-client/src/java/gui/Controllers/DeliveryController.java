@@ -17,11 +17,13 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import slitclient.ControlledScreen;
@@ -49,10 +51,16 @@ public class DeliveryController implements Initializable, ControlledScreen {
     private Desktop desktop = Desktop.getDesktop();
     private int moduleID;
 
+    private ModuleDeliveryManager moduleDeliveryManager = new ModuleDeliveryManager(); 
+    
 
     private Main application;
 
     ScreensController myController;
+    @FXML
+    private Button cancel;
+    @FXML
+    private Button confirm;
     /**
      * Initializes the controller class.
      */
@@ -85,13 +93,11 @@ public class DeliveryController implements Initializable, ControlledScreen {
             int moduleID = Integer.parseInt(String.valueOf(intString));
             System.out.println(moduleID);
             
-            //ModuleDeliveryDataModel moduleDeliveryModel = new ModuleDeliveryDataModel(UserType.userID, moduleID, commentField.getText(), fileName.getText());
-            ModuleDeliveryDataModel moduleDeliveryModel = new ModuleDeliveryDataModel(3, 3, "Hestkuk å sånn sit", "bitchassnigger.mp4");
-            ModuleDeliveryManager moduleDeliveryManager = new ModuleDeliveryManager();
-            
-            moduleDeliveryManager.storeModuleDelivery(moduleDeliveryModel); 
-            
-            errorLabel.setText(modulePicker.getValue() + " opprettet");
+            ModuleDeliveryDataModel moduleDeliveryModel = new ModuleDeliveryDataModel(UserType.userID, moduleID, commentField.getText(), fileName.getText());
+
+            this.moduleDeliveryManager.storeModuleDelivery(moduleDeliveryModel);
+            this.errorLabel.setTextFill(Color.web("#13c113"));
+            errorLabel.setText("Oppgavebesvarelse for " + modulePicker.getValue() + " levert");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -107,6 +113,7 @@ public class DeliveryController implements Initializable, ControlledScreen {
         
     }
     
+    @FXML
     public void chooseFile() throws IOException {
         Stage stage = new Stage();
         FileChooser fileChooser = new FileChooser();

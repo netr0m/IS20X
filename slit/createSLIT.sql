@@ -20,14 +20,15 @@ CREATE TABLE Module (
 );
 
 CREATE TABLE ModuleDelivery (
+	deliveryID INT UNSIGNED NOT NULL AUTO_INCREMENT,
     userID INT,
     moduleID INT,
     uploadDate TIMESTAMP NOT NULL DEFAULT NOW(),
     moduleStatus INT(1) NOT NULL DEFAULT 0,
     moduleDelivery TEXT NULL,
-    moduleFile BLOB NULL,
+    moduleFile VARCHAR(300) NULL,
     moduleAssesmentComment TEXT NULL,
-    CONSTRAINT moduleDelivery_pk PRIMARY KEY (userID , moduleID),
+    PRIMARY KEY (deliveryID),
     CONSTRAINT moduleDelivery_module_fk FOREIGN KEY (moduleID)
         REFERENCES Module (moduleID),
     CONSTRAINT moduleDelivery_user_fk FOREIGN KEY (userID)
@@ -53,10 +54,12 @@ CREATE VIEW Overlook AS
 
 INSERT INTO Users VALUES(null, 'Admin', 'UiA', 'admin', 'admin', 'admin@uia.no', '1'); #Admin
 INSERT INTO Users VALUES(null, 'Hallgeir', 'Nilsen', 'hallgeir', 'hallgeir', 'hallgeir@uia.no', '2'); #Teacher
+INSERT INTO Users VALUES(null, 'Even Åby', 'Larsen', 'even', 'even', 'even@uia.no', '2'); #Teacher
+INSERT INTO Users VALUES(null, 'Robin A. M.', 'Rondestvedt', 'amirob13', 'amirob13', 'amirob13@student.uia.no', '3'); #Assistant teacher
 INSERT INTO Users VALUES(null, 'Morten', 'Amundsen', 'mortea15', 'mortea15', 'mortea15@uia.no', '4'); #Student
 INSERT INTO Users VALUES(null, 'Svenn-Roger', 'Sørensen', 'srsore15', 'srsore15', 'srsore15@uia.no', '4'); #Student
 
-INSERT INTO Module(moduleName, moduleSummary, moduleDescription) VALUES ('Module 1', 'Module 1 - Basic Introduction', 'Open up a laptop. If its a Lenovo, give it to your grandfather.'); 
-INSERT INTO Module(moduleName, moduleSummary, moduleDescription) VALUES ('Module 2', 'Module 2 - Get a new PC', 'Buy a new computer if you had a Lenovo. Trust me');
+INSERT INTO Module(moduleName, moduleSummary, moduleDescription) VALUES ('Module 1', 'Meet a teacher/assistant, and show them how to open BlueJ', 'No delivery necessary. Meet with an assistant/teacher to get approval'); 
+INSERT INTO Module(moduleName, moduleSummary, moduleDescription) VALUES ('Module 2', 'Cool module where you should record while you create a class in Java.', 'Filedelivery is necessary. Please deliver a zipped folder containing the file.');
 
-INSERT INTO ModuleDelivery (userID, moduleID, moduleDelivery, moduleFile) VALUES (3, 1, 'Test delivery. Have a gr8 l8 n8 m8 :)', 'modulvideo1.mp4');
+INSERT INTO ModuleDelivery (userID, moduleID, moduleDelivery) VALUES (5, 1, 'Test delivery. Have a gr8 l8 n8 m8 :)');

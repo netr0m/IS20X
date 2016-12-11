@@ -19,11 +19,6 @@ import javafx.collections.FXCollections;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import database.Overlook;
-import static database.Overlook_.moduleDelivery;
-import static database.Overlook_.moduleName;
-import static database.Overlook_.uploadDate;
-import static database.Overlook_.username;
 import java.util.List;
 import javax.persistence.EntityManager;
 

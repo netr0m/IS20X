@@ -8,7 +8,6 @@ package database;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -56,7 +55,7 @@ public class Module implements Serializable {
     @Size(max = 65535)
     @Column(name = "moduleDescription")
     private String moduleDescription;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "module")
+    @OneToMany(mappedBy = "moduleID")
     private List<Moduledelivery> moduledeliveryList;
 
     public Module() {

@@ -5,7 +5,9 @@
  */
 package Server;
 
+import Common.DataModelConverters;
 import Data.ModuleDeliveryDataModel;
+import database.Module;
 import database.Moduledelivery;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,10 @@ import javax.persistence.Query;
 @Stateless
 public class ModuleDeliverySessionBean implements ModuleDeliverySessionBeanRemote {
 
+    //@EJB
+    //private UserModuleSession userModuleSession;
+
+    
     @PersistenceContext(unitName = "slit-ejbPU")
     private EntityManager em;
 
@@ -33,12 +39,14 @@ public class ModuleDeliverySessionBean implements ModuleDeliverySessionBeanRemot
         List<ModuleDeliveryDataModel> dataModuleDeliveries = new ArrayList<ModuleDeliveryDataModel>();
         
         try {
-            Query query = em.createNamedQuery("ModuleDelivery.findAll", ModuleDelivery.class);
+            Query query = em.createNamedQuery("Moduledelivery.findAll", Moduledelivery.class);
             
-            List<ModuleDelivery> moduleDeliveries = query.getResultList();
+            List<Moduledelivery> moduleDeliveries = query.getResultList();
             
-            for (ModuleDelivery moduleDelivery : moduleDeliveries) {
-                dataModuleDeliveries.add(this.convertModuleDelivery(moduleDelivery));
+            for (Moduledelivery moduleDelivery : moduleDeliveries) {
+                
+                dataModuleDeliveries.add(DataModelConverters.convertModuleDeliveryEntityToDataModel(moduleDelivery));
+                //dataModuleDeliveries.add(this.convertModuleDelivery(moduleDelivery));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,39 +59,16 @@ public class ModuleDeliverySessionBean implements ModuleDeliverySessionBeanRemot
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    
-    /**
-     * Convert Entity moduleDelivery to a ModuleDeliveryDataModel
-     * @param moduleDelivery
-     * @return moduleDeliveryDataModel
-     */
-    public ModuleDeliveryDataModel convertModuleDelivery(ModuleDelivery moduleDelivery) {
-        ModuleDeliveryDataModel moduleDeliveryDataModel = new ModuleDeliveryDataModel();
-        
-        moduleDeliveryDataModel.setUserID(moduleDelivery.getUserID());
-        moduleDeliveryDataModel.setModuleDelivery(moduleDelivery.getModuleDelivery());
-        moduleDeliveryDataModel.setModuleFile(moduleDelivery.getModuleFile());
-        
-        return moduleDeliveryDataModel;
-    }
-
-    private ModuleDelivery convertToModuleDeliveryEntity(ModuleDeliveryDataModel moduleDelivery) {
-        ModuleDelivery moduleDeliveryDataModel = new ModuleDelivery();
-        
-        moduleDeliveryDataModel.setUserID(moduleDelivery.getUserID());
-        moduleDeliveryDataModel.setUserID(moduleDelivery.getUserID());
-        moduleDeliveryDataModel.setModuleID(moduleDelivery.getModuleID());
-        moduleDeliveryDataModel.setModuleDelivery(moduleDelivery.getModuleDelivery());
-        moduleDeliveryDataModel.setModuleFile(moduleDelivery.getModuleFile());
-        
-        return moduleDeliveryDataModel;
+    public Module getModuleEntityFromId(int id) throws Exception
+    {
+        return this.em.find(Module.class, id);
     }
     
     @Override
     public boolean storeModuleDelivery(ModuleDeliveryDataModel moduleDelivery) {
         // java.lang.IllegalArgumentException: Object: Server.ModuleDelivery@4400069b is not a known Entity type.
         // Feil objekttype
-        ModuleDelivery moduleDeliveryEntity = this.convertToModuleDeliveryEntity(moduleDelivery);
+        Moduledelivery moduleDeliveryEntity = DataModelConverters.convertModuleDeliveryToEntity(moduleDelivery);
         
         try {
             em.persist(moduleDeliveryEntity);

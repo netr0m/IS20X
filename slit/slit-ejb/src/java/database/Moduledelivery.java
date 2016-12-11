@@ -9,8 +9,10 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -32,15 +34,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Moduledelivery.findAll", query = "SELECT m FROM Moduledelivery m"),
-    @NamedQuery(name = "Moduledelivery.findByUserID", query = "SELECT m FROM Moduledelivery m WHERE m.moduledeliveryPK.userID = :userID"),
-    @NamedQuery(name = "Moduledelivery.findByModuleID", query = "SELECT m FROM Moduledelivery m WHERE m.moduledeliveryPK.moduleID = :moduleID"),
+    @NamedQuery(name = "Moduledelivery.findByDeliveryID", query = "SELECT m FROM Moduledelivery m WHERE m.deliveryID = :deliveryID"),
     @NamedQuery(name = "Moduledelivery.findByUploadDate", query = "SELECT m FROM Moduledelivery m WHERE m.uploadDate = :uploadDate"),
-    @NamedQuery(name = "Moduledelivery.findByModuleStatus", query = "SELECT m FROM Moduledelivery m WHERE m.moduleStatus = :moduleStatus")})
+    @NamedQuery(name = "Moduledelivery.findByModuleStatus", query = "SELECT m FROM Moduledelivery m WHERE m.moduleStatus = :moduleStatus"),
+    @NamedQuery(name = "Moduledelivery.findByModuleFile", query = "SELECT m FROM Moduledelivery m WHERE m.moduleFile = :moduleFile")})
 public class Moduledelivery implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected ModuledeliveryPK moduledeliveryPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "deliveryID")
+    private Integer deliveryID;
     @Basic(optional = false)
     @NotNull
     @Column(name = "uploadDate")
@@ -54,43 +59,39 @@ public class Moduledelivery implements Serializable {
     @Size(max = 65535)
     @Column(name = "moduleDelivery")
     private String moduleDelivery;
+    @Size(max = 300)
+    @Column(name = "moduleFile")
+    private String moduleFile;
     @Lob
     @Size(max = 65535)
     @Column(name = "moduleAssesmentComment")
     private String moduleAssesmentComment;
-    @Lob
-    @Column(name = "moduleFile")
-    private byte[] moduleFile;
-    @JoinColumn(name = "moduleID", referencedColumnName = "moduleID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Module module;
-    @JoinColumn(name = "userID", referencedColumnName = "userID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Users users;
+    @JoinColumn(name = "moduleID", referencedColumnName = "moduleID")
+    @ManyToOne
+    private Module moduleID;
+    @JoinColumn(name = "userID", referencedColumnName = "userID")
+    @ManyToOne
+    private Users userID;
 
     public Moduledelivery() {
     }
 
-    public Moduledelivery(ModuledeliveryPK moduledeliveryPK) {
-        this.moduledeliveryPK = moduledeliveryPK;
+    public Moduledelivery(Integer deliveryID) {
+        this.deliveryID = deliveryID;
     }
 
-    public Moduledelivery(ModuledeliveryPK moduledeliveryPK, Date uploadDate, int moduleStatus) {
-        this.moduledeliveryPK = moduledeliveryPK;
+    public Moduledelivery(Integer deliveryID, Date uploadDate, int moduleStatus) {
+        this.deliveryID = deliveryID;
         this.uploadDate = uploadDate;
         this.moduleStatus = moduleStatus;
     }
 
-    public Moduledelivery(int userID, int moduleID) {
-        this.moduledeliveryPK = new ModuledeliveryPK(userID, moduleID);
+    public Integer getDeliveryID() {
+        return deliveryID;
     }
 
-    public ModuledeliveryPK getModuledeliveryPK() {
-        return moduledeliveryPK;
-    }
-
-    public void setModuledeliveryPK(ModuledeliveryPK moduledeliveryPK) {
-        this.moduledeliveryPK = moduledeliveryPK;
+    public void setDeliveryID(Integer deliveryID) {
+        this.deliveryID = deliveryID;
     }
 
     public Date getUploadDate() {
@@ -117,6 +118,14 @@ public class Moduledelivery implements Serializable {
         this.moduleDelivery = moduleDelivery;
     }
 
+    public String getModuleFile() {
+        return moduleFile;
+    }
+
+    public void setModuleFile(String moduleFile) {
+        this.moduleFile = moduleFile;
+    }
+
     public String getModuleAssesmentComment() {
         return moduleAssesmentComment;
     }
@@ -125,34 +134,26 @@ public class Moduledelivery implements Serializable {
         this.moduleAssesmentComment = moduleAssesmentComment;
     }
 
-    public byte[] getModuleFile() {
-        return moduleFile;
+    public Module getModuleID() {
+        return moduleID;
     }
 
-    public void setModuleFile(byte[] moduleFile) {
-        this.moduleFile = moduleFile;
+    public void setModuleID(Module moduleID) {
+        this.moduleID = moduleID;
     }
 
-    public Module getModule() {
-        return module;
+    public Users getUserID() {
+        return userID;
     }
 
-    public void setModule(Module module) {
-        this.module = module;
-    }
-
-    public Users getUsers() {
-        return users;
-    }
-
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUserID(Users userID) {
+        this.userID = userID;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (moduledeliveryPK != null ? moduledeliveryPK.hashCode() : 0);
+        hash += (deliveryID != null ? deliveryID.hashCode() : 0);
         return hash;
     }
 
@@ -163,7 +164,7 @@ public class Moduledelivery implements Serializable {
             return false;
         }
         Moduledelivery other = (Moduledelivery) object;
-        if ((this.moduledeliveryPK == null && other.moduledeliveryPK != null) || (this.moduledeliveryPK != null && !this.moduledeliveryPK.equals(other.moduledeliveryPK))) {
+        if ((this.deliveryID == null && other.deliveryID != null) || (this.deliveryID != null && !this.deliveryID.equals(other.deliveryID))) {
             return false;
         }
         return true;
@@ -171,7 +172,7 @@ public class Moduledelivery implements Serializable {
 
     @Override
     public String toString() {
-        return "database.Moduledelivery[ moduledeliveryPK=" + moduledeliveryPK + " ]";
+        return "database.Moduledelivery[ deliveryID=" + deliveryID + " ]";
     }
     
 }

@@ -6,66 +6,60 @@
 package Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
  * @author Morten
  */
 public class ModuleDeliveryDataModel implements Serializable {
-    private int userID; 
-    private int moduleID; 
-    private String uploadDate; 
-    private boolean moduleStatus; 
+    private UsersDataModel user;
+    private ModuleDataModel module; 
+
+    private Date uploadDate;
+    private int moduleStatus; 
     private String moduleDelivery; 
     private String moduleFile; 
     private String moduleAssesmentComment; 
     
     public ModuleDeliveryDataModel(int userID, int moduleID, String moduleDelivery, String moduleFile) {
-        this.userID = userID;     
-        this.moduleID = moduleID;
+        //this.user = user;  
+        //this.module = module;
         this.moduleDelivery = moduleDelivery;     
         this.moduleFile = moduleFile;
     }
     
     public ModuleDeliveryDataModel(int userID, int moduleID, String moduleDelivery) {
-        this.userID = userID;
-        this.moduleID = moduleID;
+        //this.userID = userID;  
+        //this.moduleID = moduleID;
         this.moduleDelivery = moduleDelivery;
     }
     
     public ModuleDeliveryDataModel() {
         
     }
-
-    public int getUserID() {
-        return userID;
+    
+    public UsersDataModel getUser() {
+        return user;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUser(UsersDataModel user) {
+        this.user = user;
     }
-
-    public int getModuleID() {
-        return moduleID;
-    }
-
-    public void setModuleID(int moduleID) {
-        this.moduleID = moduleID;
-    }
-
-    public String getUploadDate() {
+    
+    public Date getUploadDate() {
         return uploadDate;
     }
 
-    public void setUploadDate(String uploadDate) {
+    public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
     }
 
-    public boolean isModuleStatus() {
+    public int isModuleStatus() {
         return moduleStatus;
     }
 
-    public void setModuleStatus(boolean moduleStatus) {
+    public void setModuleStatus(int moduleStatus) {
         this.moduleStatus = moduleStatus;
     }
 
@@ -91,6 +85,14 @@ public class ModuleDeliveryDataModel implements Serializable {
 
     public void setModuleAssesmentComment(String moduleAssesmentComment) {
         this.moduleAssesmentComment = moduleAssesmentComment;
+    }
+    
+    public ModuleDataModel getModule() {
+        return module;
+    }
+
+    public void setModule(ModuleDataModel module) {
+        this.module = module;
     }
     
    
