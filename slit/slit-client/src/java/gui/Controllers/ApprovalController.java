@@ -22,7 +22,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import gui.Screens.ControlledScreen;
 import gui.Screens.Main;
 import gui.Screens.ScreensController;
@@ -73,7 +72,7 @@ public class ApprovalController implements Initializable, ControlledScreen {
         
         ObservableList<ModuleDeliveryListObject> items = FXCollections.observableArrayList();
         
-        for (ModuleDeliveryDataModel module : this.deliveryManager.getModuleDeliveries())
+        for (ModuleDeliveryDataModel module : this.deliveryManager.getWaitingModuleDeliveries())
         {
             ModuleDeliveryListObject listObject = new ModuleDeliveryListObject();
             listObject.setComment(module.getModuleDelivery());
@@ -101,14 +100,12 @@ public class ApprovalController implements Initializable, ControlledScreen {
     private void onTableItemClick(MouseEvent event) {
         
         ModuleDeliveryListObject moduleDelivery = this.overLookTable.getSelectionModel().selectedItemProperty().get(); 
-        System.out.println(moduleDelivery.getUsername());
-        
         AssessmentObject assessmentObject = new AssessmentObject();
-        
         assessmentObject.setUsername(moduleDelivery.getUsername());
         assessmentObject.setModulename(moduleDelivery.getModulename());
-        assessmentObject.setDeliveryText(moduleDelivery.getComment());
-        assessmentObject.setModuleFile(moduleDelivery.getFile());
+        assessmentObject.setComment(moduleDelivery.getComment());
+        assessmentObject.setFile(moduleDelivery.getFile());
+        
         myController.setScreen(Main.assessmentID);
         
     }

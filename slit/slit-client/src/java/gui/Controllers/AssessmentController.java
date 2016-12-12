@@ -12,14 +12,10 @@ import gui.Screens.Main;
 import gui.Screens.ControlledScreen;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import database.Users;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
@@ -39,21 +35,23 @@ public class AssessmentController implements Initializable, ControlledScreen {
 
     ScreensController myController;
     @FXML
-    private static TextField usernameField;
+    private TextField usernameField;
     @FXML
-    private static TextField modulenameField;
+    private TextField modulenameField;
     @FXML
-    private static TextArea moduleTextField;
+    private TextArea moduleTextField;
     @FXML
-    private static Hyperlink moduleFileField;
+    private Hyperlink moduleFileField;
     @FXML
-    private static CheckBox approvedBox;
+    private CheckBox approvedBox;
     @FXML
     private Button cancel;
     @FXML
     private Button confirm;
     @FXML
     private TextArea assessmentCommentField;
+    
+    private int status;
     /**
      * Initializes the controller class.
      */
@@ -67,18 +65,29 @@ public class AssessmentController implements Initializable, ControlledScreen {
 
     @FXML
     private void goToApproval(ActionEvent event) {
+        assessmentCommentField.setText("");
+        approvedBox.setSelected(false);
         myController.setScreen(Main.approvalID);
     }
 
     @FXML
     private void submitApproval(ActionEvent event) {
+        if (approvedBox.isSelected()) {
+            status = 1;
+        } else {
+                status = 2;
+                }
+        System.out.println("Tilbakemelding: " + assessmentCommentField.getText() + ", Status: " + status);
         myController.setScreen(Main.approvalID);
+        approvedBox.setSelected(false);
+        assessmentCommentField.setText("");
     }
     
-    public void setData() {
-        usernameField.setText(AssessmentObject.getUsername());
-        modulenameField.setText(AssessmentObject.getModulename());
-        moduleTextField.setText(AssessmentObject.getDeliveryText());
-        moduleFileField.setText(AssessmentObject.getModuleFile());        
+    @FXML
+    public void setData(ActionEvent event) {
+        usernameField.setText(AssessmentObject.username);
+        modulenameField.setText(AssessmentObject.modulename);
+        moduleTextField.setText(AssessmentObject.comment);
+        moduleFileField.setText(AssessmentObject.file);
     }
 }

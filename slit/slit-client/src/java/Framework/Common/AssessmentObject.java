@@ -5,20 +5,18 @@
  */
 package Framework.Common;
 
-import java.util.Date;
-
 /**
  *
  * @author mortea15
  */
 public class AssessmentObject {
-
     public static String username;
-    private static String modulename;
-    private static String deliveryText; 
-    private static String moduleFile; 
-    
-    public static String getUsername() {
+    public static String modulename;
+    private static String uploadDate;
+    public static String comment;
+    public static String file;
+
+    public String getUsername() {
         return username;
     }
 
@@ -26,27 +24,35 @@ public class AssessmentObject {
         this.username = username;
     }
 
-    public static String getModulename() {
+    public String getModulename() {
         return modulename;
     }
 
     public void setModulename(String modulename) {
         this.modulename = modulename;
+    }   
+
+    public String getUploadDate() {
+        return uploadDate;
     }
 
-    public static String getDeliveryText() {
-        return deliveryText;
+    public void setUploadDate(String uploadDate) {
+        this.uploadDate = uploadDate;
     }
 
-    public void setDeliveryText(String deliveryText) {
-        this.deliveryText = deliveryText;
+    public String getComment() {
+        return comment;
     }
 
-    public static String getModuleFile() {
-        return moduleFile;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public void setModuleFile(String moduleFile) {
-        this.moduleFile = moduleFile;
+    public String getFile() {
+        return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
     }
 }

@@ -18,6 +18,8 @@ public interface ModuleDeliverySessionBeanRemote {
     
     List<ModuleDeliveryDataModel> getModuleDeliveries();
     
+    List<ModuleDeliveryDataModel> getWaitingModuleDeliveries();
+    
     List<ModuleDeliveryDataModel> getAllModuleDeliveries();
     
     boolean storeModuleDelivery(ModuleDeliveryDataModel moduleDelivery); 

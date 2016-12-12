@@ -14,7 +14,7 @@ import javax.ejb.Remote;
  * @author Morten
  */
 @Remote
-public interface UsersModelSessionRemote {
+public interface UserSessionBeanRemote {
     
     UsersDataModel getUserFromID(int ID);
     

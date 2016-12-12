@@ -53,6 +53,27 @@ public class ModuleDeliverySessionBean implements ModuleDeliverySessionBeanRemot
         }
         return dataModuleDeliveries;
     }
+    
+    @Override
+    public List<ModuleDeliveryDataModel> getWaitingModuleDeliveries() {
+        List<ModuleDeliveryDataModel> dataModuleDeliveries = new ArrayList<ModuleDeliveryDataModel>();
+        
+        try {
+            Query query = em.createNamedQuery("Moduledelivery.findByModuleStatus", Moduledelivery.class);
+            query.setParameter("moduleStatus", 0);
+            
+            List<Moduledelivery> moduleDeliveries = query.getResultList();
+            
+            for (Moduledelivery moduleDelivery : moduleDeliveries) {
+                
+                dataModuleDeliveries.add(DataModelConverters.convertModuleDeliveryEntityToDataModel(moduleDelivery));
+                //dataModuleDeliveries.add(this.convertModuleDelivery(moduleDelivery));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dataModuleDeliveries;
+    }
 
     @Override
     public List<ModuleDeliveryDataModel> getAllModuleDeliveries() {

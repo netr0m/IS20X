@@ -6,13 +6,13 @@
 package Framework.Managers;
 
 import Data.UsersDataModel;
-import Server.UsersModelSessionRemote;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import Server.UserSessionBeanRemote;
 
 /**
  *
@@ -20,11 +20,11 @@ import javax.naming.NamingException;
  */
 public class UserManager {
     
-    private UsersModelSessionRemote lookupUsersModuleSessionRemote() {
+    private UserSessionBeanRemote lookupUsersModuleSessionRemote() {
         try {
             Context c = new InitialContext();
             //return (UsersModelSessionRemote) c.lookup("java:global/slit-ejb/UserModuleSession");
-            return (UsersModelSessionRemote) c.lookup("java:global/slit-ejb/UserModuleSession");
+            return (UserSessionBeanRemote) c.lookup("java:global/slit-ejb/UserSessionBean");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

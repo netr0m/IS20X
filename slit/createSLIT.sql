@@ -38,11 +38,11 @@ CREATE TABLE ModuleDelivery (
 INSERT INTO Users VALUES(null, 'Admin', 'UiA', 'admin', 'admin', 'admin@uia.no', '1'); #Admin
 INSERT INTO Users VALUES(null, 'Hallgeir', 'Nilsen', 'hallgeir', 'hallgeir', 'hallgeir@uia.no', '2'); #Teacher
 INSERT INTO Users VALUES(null, 'Even Åby', 'Larsen', 'even', 'even', 'even@uia.no', '2'); #Teacher
-INSERT INTO Users VALUES(null, 'Robin A. M.', 'Rondestvedt', 'amirob13', 'amirob13', 'amirob13@student.uia.no', '3'); #Assistant teacher
+INSERT INTO Users VALUES(null, 'Assistant', 'Assistantsen', 'assistant', 'assistant', 'assistant@student.uia.no', '3'); #Assistant teacher
 INSERT INTO Users VALUES(null, 'Morten', 'Amundsen', 'mortea15', 'mortea15', 'mortea15@uia.no', '4'); #Student
 INSERT INTO Users VALUES(null, 'Svenn-Roger', 'Sørensen', 'srsore15', 'srsore15', 'srsore15@uia.no', '4'); #Student
 
 INSERT INTO Module(moduleName, moduleSummary, moduleDescription) VALUES ('Module 1', 'Meet a teacher/assistant, and show them how to open BlueJ', 'No delivery necessary. Meet with an assistant/teacher to get approval'); 
 INSERT INTO Module(moduleName, moduleSummary, moduleDescription) VALUES ('Module 2', 'Cool module where you should record while you create a class in Java.', 'Filedelivery is necessary. Please deliver a zipped folder containing the file.');
 
-INSERT INTO ModuleDelivery (userID, moduleID, moduleDelivery) VALUES (5, 1, 'Test delivery. Have a gr8 l8 n8 m8 :)');
+INSERT INTO ModuleDelivery (userID, moduleID, moduleDelivery) VALUES (5, 1, 'Test delivery 123. Excellent system with a touch of elegance :)');

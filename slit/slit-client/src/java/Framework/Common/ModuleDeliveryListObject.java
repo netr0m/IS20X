@@ -5,8 +5,6 @@
  */
 package Framework.Common;
 
-import java.util.Date;
-
 /**
  *
  * @author mortea15

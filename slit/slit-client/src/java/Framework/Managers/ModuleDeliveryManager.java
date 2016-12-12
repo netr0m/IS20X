@@ -38,6 +38,10 @@ public class ModuleDeliveryManager {
         return this.lookupModuleDeliverySessionBeanRemote().getModuleDeliveries(); 
     }
     
+    public List<ModuleDeliveryDataModel> getWaitingModuleDeliveries() {
+        return this.lookupModuleDeliverySessionBeanRemote().getWaitingModuleDeliveries();
+    }
+    
     public boolean storeModuleDelivery(ModuleDeliveryDataModel dataModuleDelivery) {
         return this.lookupModuleDeliverySessionBeanRemote().storeModuleDelivery(dataModuleDelivery);
     }

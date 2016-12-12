@@ -40,6 +40,8 @@ public class Main extends Application {
     public static String newmoduleFile = "NewModule.fxml";
     public static String assessmentID = "assessment";
     public static String assessmentFile = "Assessment.fxml";
+    public static String studentlistID = "studentlist";
+    public static String studentlistFile = "StudentList.fxml";
     
     
     @Override
@@ -67,6 +69,7 @@ public class Main extends Application {
         mainContainer.loadScreen(Main.approvalID, Main.approvalFile);
         mainContainer.loadScreen(Main.newmoduleID, Main.newmoduleFile);
         mainContainer.loadScreen(Main.assessmentID, Main.assessmentFile);
+        mainContainer.loadScreen(Main.studentlistID, Main.studentlistFile);
         
         // Finally, we set a screen for the window once it opens up
         mainContainer.setScreen(Main.loginID);

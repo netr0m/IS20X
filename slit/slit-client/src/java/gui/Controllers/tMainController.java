@@ -5,8 +5,6 @@
  */
 package gui.Controllers;
 
-import gui.Controllers.LoginController;
-import gui.Controllers.GradingController;
 import gui.Screens.ScreensController;
 import gui.Screens.Main;
 import gui.Screens.ControlledScreen;
@@ -15,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -28,6 +27,20 @@ public class tMainController implements Initializable, ControlledScreen {
     private GradingController grading;
 
     ScreensController myController;
+    @FXML
+    private Button goEvaluate;
+    @FXML
+    private Button goApprove;
+    @FXML
+    private Button goOverlook;
+    @FXML
+    private Button logout;
+    @FXML
+    private Button createUser;
+    @FXML
+    private Button createModule;
+    @FXML
+    private Button studentListButton;
     /**
      * Initializes the controller class.
      */
@@ -64,7 +77,6 @@ public class tMainController implements Initializable, ControlledScreen {
         myController.setScreen(Main.gradingID);
     }
     
-    @FXML
     public void goToDelivery(ActionEvent event) {
         myController.setScreen(Main.deliveryID);
     }
@@ -77,5 +89,10 @@ public class tMainController implements Initializable, ControlledScreen {
     @FXML
     public void goToCreateModule(ActionEvent event) {
         myController.setScreen(Main.newmoduleID);
+    }
+
+    @FXML
+    private void goToStudentList(ActionEvent event) {
+        myController.setScreen(Main.studentlistID);
     }
 }

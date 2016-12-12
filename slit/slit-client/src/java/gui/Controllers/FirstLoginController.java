@@ -9,7 +9,6 @@ import gui.Screens.ScreensController;
 import gui.Screens.Main;
 import gui.Screens.ControlledScreen;
 import Data.UsersDataModel;
-import Server.UsersModelSessionRemote;
 import Framework.Managers.UserManager;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,6 +23,7 @@ import javafx.scene.paint.Color;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import Server.UserSessionBeanRemote;
 /**
  * FXML Controller class
  *
@@ -86,10 +86,10 @@ public class FirstLoginController implements Initializable, ControlledScreen {
         }
     }
     
-    private UsersModelSessionRemote lookupUserBeanRemote() {
+    private UserSessionBeanRemote lookupUserBeanRemote() {
         try {
             Context c = new InitialContext();
-            return (UsersModelSessionRemote) c.lookup("java:global/slit-ejb/UserModuleSession");
+            return (UserSessionBeanRemote) c.lookup("java:global/slit-ejb/UserModuleSession");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

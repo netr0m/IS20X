@@ -20,7 +20,7 @@ import javax.persistence.Query;
  * @author Morten
  */
 @Stateless
-public class UserModuleSession implements UsersModelSessionRemote {
+public class UserSessionBean implements UserSessionBeanRemote {
 
     @PersistenceContext(unitName = "slit-ejbPU")
     private EntityManager em;
