@@ -14,9 +14,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import slitclient.ControlledScreen;
-import slitclient.Main;
-import slitclient.ScreensController;
+import gui.Screens.ControlledScreen;
+import gui.Screens.Main;
+import gui.Screens.ScreensController;
 
 /**
  * FXML Controller class

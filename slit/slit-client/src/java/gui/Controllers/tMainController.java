@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slitclient;
+package gui.Controllers;
 
+import gui.Controllers.LoginController;
+import gui.Controllers.GradingController;
+import gui.Screens.ScreensController;
+import gui.Screens.Main;
+import gui.Screens.ControlledScreen;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;

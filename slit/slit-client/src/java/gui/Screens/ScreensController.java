@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slitclient;
+package gui.Screens;
 
 import java.util.HashMap;
 import javafx.animation.KeyFrame;
@@ -60,7 +60,7 @@ public class ScreensController extends StackPane {
             if (!getChildren().isEmpty()) {
                 Timeline fade = new Timeline(
                     new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),
-                    new KeyFrame(new Duration(1000), new EventHandler<ActionEvent>() {
+                    new KeyFrame(new Duration(500), new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent t) {
                     getChildren().remove(0);

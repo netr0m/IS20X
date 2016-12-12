@@ -6,6 +6,7 @@ package gui.Controllers;
  * and open the template in the editor.
  */
 import Data.ModuleDeliveryDataModel;
+import Framework.Common.AssessmentObject;
 import Framework.Common.ModuleDeliveryListObject;
 import Framework.Managers.ModuleDeliveryManager;
 import Framework.Managers.ModuleManager;
@@ -21,10 +22,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import slitclient.ControlledScreen;
-import slitclient.LoginController;
-import slitclient.Main;
-import slitclient.ScreensController;
+import javafx.stage.Stage;
+import gui.Screens.ControlledScreen;
+import gui.Screens.Main;
+import gui.Screens.ScreensController;
 
 /**
  * FXML Controller class
@@ -99,9 +100,16 @@ public class ApprovalController implements Initializable, ControlledScreen {
     @FXML
     private void onTableItemClick(MouseEvent event) {
         
-        ModuleDeliveryListObject obj = this.overLookTable.getSelectionModel().selectedItemProperty().get(); 
-        System.out.println(obj.getUsername());
+        ModuleDeliveryListObject moduleDelivery = this.overLookTable.getSelectionModel().selectedItemProperty().get(); 
+        System.out.println(moduleDelivery.getUsername());
         
+        AssessmentObject assessmentObject = new AssessmentObject();
+        
+        assessmentObject.setUsername(moduleDelivery.getUsername());
+        assessmentObject.setModulename(moduleDelivery.getModulename());
+        assessmentObject.setDeliveryText(moduleDelivery.getComment());
+        assessmentObject.setModuleFile(moduleDelivery.getFile());
+        myController.setScreen(Main.assessmentID);
         
     }
 }

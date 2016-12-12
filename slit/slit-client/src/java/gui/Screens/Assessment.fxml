@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controllers.AssessmentController">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="1300.0">
+         <items>
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="55.0" minHeight="25.0" minWidth="55.0" mnemonicParsing="false" onAction="#goToApproval" prefHeight="25.0" prefWidth="55.0" text="Tilbake" textAlignment="CENTER">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="12.0" />
+               </font>
+            </Button>
+         </items>
+      </ToolBar>
+      <VBox alignment="CENTER" layoutX="9.0" layoutY="72.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="603.0" prefWidth="1080.0" spacing="30.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="72.0">
+         <children>
+            <TextField fx:id="usernameField" alignment="CENTER" editable="false" maxHeight="25.0" maxWidth="300.0" minHeight="25.0" minWidth="300.0" prefHeight="25.0" prefWidth="300.0" promptText="Student">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="modulenameField" alignment="CENTER" editable="false" layoutX="400.0" layoutY="130.0" maxHeight="25.0" maxWidth="300.0" minHeight="25.0" minWidth="300.0" prefHeight="25.0" prefWidth="300.0" promptText="Modul">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="12.0" />
+               </font>
+            </TextField>
+            <TextArea fx:id="moduleTextField" editable="false" prefHeight="169.0" prefWidth="1080.0" promptText="Oppgavebesvarelse">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="13.0" />
+               </font>
+            </TextArea>
+            <Hyperlink fx:id="moduleFileField" alignment="CENTER" contentDisplay="CENTER" text="Modulvideo" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="14.0" />
+               </font>
+            </Hyperlink>
+            <TextArea fx:id="assessmentCommentField" layoutX="10.0" layoutY="202.0" prefHeight="170.0" prefWidth="1080.0" promptText="Tilbakemelding">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="13.0" />
+               </font>
+            </TextArea>
+            <CheckBox fx:id="approvedBox" mnemonicParsing="false" text="Godkjent">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="12.0" />
+               </font></CheckBox>
+            <HBox alignment="CENTER" cacheShape="false" centerShape="false" maxHeight="25.0" maxWidth="175.0" minHeight="25.0" minWidth="175.0" prefHeight="720.0" prefWidth="1280.0" scaleShape="false" spacing="30.0">
+               <children>
+                  <Button fx:id="cancel" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToApproval" text="Avbryt" textAlignment="CENTER">
+                     <font>
+                        <Font name="Yu Gothic UI Light" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="confirm" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#submitApproval" text="Bekreft" textAlignment="CENTER">
+                     <font>
+                        <Font name="Yu Gothic UI Light" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

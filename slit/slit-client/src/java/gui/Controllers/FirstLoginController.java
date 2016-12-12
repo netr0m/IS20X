@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slitclient;
+package gui.Controllers;
 
+import gui.Screens.ScreensController;
+import gui.Screens.Main;
+import gui.Screens.ControlledScreen;
 import Data.UsersDataModel;
 import Server.UsersModelSessionRemote;
 import Framework.Managers.UserManager;

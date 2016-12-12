@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package slitclient;
+package gui.Screens;
 
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -38,6 +38,8 @@ public class Main extends Application {
     public static String approvalFile = "Approval.fxml";
     public static String newmoduleID = "newmodule";
     public static String newmoduleFile = "NewModule.fxml";
+    public static String assessmentID = "assessment";
+    public static String assessmentFile = "Assessment.fxml";
     
     
     @Override
@@ -64,6 +66,7 @@ public class Main extends Application {
         mainContainer.loadScreen(Main.firstLoginID, Main.firstLoginFile);
         mainContainer.loadScreen(Main.approvalID, Main.approvalFile);
         mainContainer.loadScreen(Main.newmoduleID, Main.newmoduleFile);
+        mainContainer.loadScreen(Main.assessmentID, Main.assessmentFile);
         
         // Finally, we set a screen for the window once it opens up
         mainContainer.setScreen(Main.loginID);

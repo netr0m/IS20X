@@ -28,10 +28,9 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import slitclient.ControlledScreen;
-import slitclient.Main;
-import slitclient.ScreensController;
-import slitclient.UserType;
+import gui.Screens.ControlledScreen;
+import gui.Screens.Main;
+import gui.Screens.ScreensController;
 
 /**
  * FXML Controller class
