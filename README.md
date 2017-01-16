@@ -1,19 +1,6 @@
-<<<<<<< HEAD
-###EAR
-HYGGELIG SAMLINGSSTED FOR BØNNER I FARTA :)
-
-###CLIENT
-KAFÉENS YTRE. HER ER INNGANGSDØRA, OG MENYEN FOR HVILKEN KAFFE DU ØNSKER Å BESTILLE.
-
-###EJB
-EN BØNNE. KAN DRA PÅ SAMLING HOS ØRET. LIKER FART OG SPENNING.
-- PS. HER LIGGER METODENE
-
-###LIB
-ET BIBLIOTEK (VEGARD ER MYE HER SIER HAN). HER LIGGER METODER (REMOTES) FOR Å SNAKKE MED SERVER
 =======
 # IS20X - HOW2GITTUTORIALS.RU/GITMASTER
-Repository for gruppe 4, UiA.
+Repository for gruppe 4, IS-202, UiA.
 
 **Gruppemedlemmer:** Morten Amundsen.jar, Svenn-Roger Sørensen.zip, Vegard Aven Sætre.tar, Anders Skrøder.exe, Oscar Lindberg.dmg, Erlend Kasin.mp3
 
