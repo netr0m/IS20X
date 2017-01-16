@@ -1,9 +1,0 @@
-okey so this is how
-
-tabellen moduledelivery består av
-userID, moduleID, uploadDate, moduleStatus (godkjent/ikke), moduleDelivery(kommentar/tekst fra elev), moduleAssessmentComment(kommentar fra lærer)
-
-en elev levere en modul via "innlevering" i applikasjonen
-en lærer rette og ser over den innleverte modulen via "godkjenning" i applikasjonen, og oppdatere entryen i databasen ved å endre status te enten "godkjent" eller ikke godkjent, og skriv en "moduleAssessmentComment" som kommentar te besvarelsen
-
-når en lærer har lagt inn en eventuell godkjenning av innleveringa, vil den kom opp i lista via "oversikt", med elevnavn og hvilke modula som har blitt godkjent
