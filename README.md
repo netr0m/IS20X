@@ -1,5 +1,5 @@
 =======
-# IS20X - HOW2GITTUTORIALS.RU/GITMASTER
+# IS20X
 Repository for gruppe 4, IS-202, UiA.
 
 **Gruppemedlemmer:** Morten Amundsen.jar, Svenn-Roger Sørensen.zip, Vegard Aven Sætre.tar, Anders Skrøder.exe, Oscar Lindberg.dmg, Erlend Kasin.mp3
